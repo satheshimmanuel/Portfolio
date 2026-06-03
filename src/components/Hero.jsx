@@ -27,12 +27,12 @@ const Hero = () => {
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '1rem', color: 'var(--text-primary)' }}>
             Hi, I'm Sathesh <br />
             <span className="text-accent" style={{ display: 'inline-block', minHeight: '1.2em', fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
-              <Typewriter words={['E-Commerce Solutions', 'Data Management Apps', 'Workflow Automation']} loop={0} cursor cursorStyle='_' typeSpeed={70} deleteSpeed={50} delaySpeed={2000} />
+              <Typewriter words={['Full stack developer', 'Freelancer', 'Web Application Developer']} loop={0} cursor cursorStyle='_' typeSpeed={70} deleteSpeed={50} delaySpeed={2000} />
             </span>
           </h1>
           
           <p className="text-secondary" style={{ fontSize: '1.125rem', maxWidth: '500px', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            Specializing in high-performance web applications, API integrations, and custom business tools for freelance clients.
+            I design and develop modern, responsive web applications with a focus on user experience and performance.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
