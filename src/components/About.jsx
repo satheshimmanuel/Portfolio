@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const stats = [
-    { label: 'Total Exp', value: '2.5+ Yrs' },
-    { label: 'Companies', value: '3' },
-    { label: 'Freelance Projects', value: '3+' },
+    { label: 'Total Exp', value: '2.5 Yrs' },
+    { label: 'Companies', value: '2' },
+    { label: 'Projects', value: 'Multiple' },
   ];
 
   return (
@@ -35,7 +35,7 @@ const About = () => {
           </h2>
           
           <p className="text-secondary" style={{ fontSize: '1.125rem', lineHeight: 1.8, marginBottom: '2rem', maxWidth: '600px' }}>
-            As a Full Stack Developer, I have a diverse background working across three different tech companies alongside a successful freelance career. I specialize in engineering bespoke ERP systems, dynamic e-commerce platforms, and data management tools. My focus is turning complex business requirements into clean, maintainable, and highly performant software.
+            I completed my engineering degree in 2023, followed by a six-month course in front-end development, which strengthened my skills in HTML, CSS, JavaScript, and React. With 1.5 years of hands-on experience in full-stack development, I have successfully worked on multiple projects, combining my technical expertise and problem-solving skills to deliver efficient, user-friendly applications.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1.5rem' }}>
@@ -62,8 +62,8 @@ const About = () => {
                alt="Code Workspace" 
                style={{ width: '100%', borderRadius: '1rem', marginBottom: '1.5rem' }} 
              />
-             <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Corporate & Freelance</h3>
-             <p className="text-secondary">Extensive experience across startups and enterprise environments.</p>
+             <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>Continuous Learner</h3>
+             <p className="text-secondary">Always eager to learn and stay updated with the latest industry trends.</p>
           </div>
         </motion.div>
 

@@ -4,31 +4,38 @@ import { motion } from 'framer-motion';
 const Experience = () => {
   const experiences = [
     {
-      year: 'Present',
-      role: 'Full Stack Developer',
-      company: 'Current Company',
-      description: 'Currently spearheading backend and frontend development for enterprise software solutions. Responsible for system architecture, API optimization, and leading feature implementations.',
+      year: '02-06-2025 - Current',
+      role: 'MERN Stack Developer',
+      company: 'Ocean Softwares, Chennai',
+      description: 'Initially engineered CRM solutions, e-commerce platforms, and business forums. Later transitioned to building an ERP system, developing workflows, custom forms, and optimizing business processes.',
       highlight: true
     },
     {
-      year: '1 Year',
-      role: 'Web Developer',
-      company: 'Previous Company (2nd)',
-      description: 'Developed responsive web applications and scalable APIs. Streamlined data pipelines and improved application load times by optimizing database queries and asset delivery.',
+      year: '01-02-2024 - 31-05-2025',
+      role: 'Associate Full Stack Developer',
+      company: 'Consortia 22, Chennai',
+      description: 'Redesigned and modernized UI/UX for a vehicle sales dashboard, introducing Dark/Light Mode and improving user engagement. Revamped a car sales website with responsive design and theme toggle for better accessibility.',
       highlight: false
     },
     {
-      year: '1.5 Years',
-      role: 'Junior Developer',
-      company: 'Previous Company (1st)',
-      description: 'Started my career building UI components and managing minor backend tasks. Rapidly grew into handling core features and complex state management using React and Node.js.',
-      highlight: false
-    },
-    {
-      year: 'Ongoing',
-      role: 'Freelance Developer',
+      year: 'Freelance',
+      role: 'Full Stack Developer',
       company: 'Independent Contractor',
-      description: 'Successfully completed 3 major freelance projects, including a fully custom E-Commerce platform, a School Data Management system, and a dynamic Quotation Generator for a B2B client.',
+      description: 'Developed a comprehensive school data management system to streamline administrative tasks, and built a custom e-commerce platform from scratch tailored to a family business.',
+      highlight: false
+    },
+    {
+      year: 'April 2023 - Sep 2023',
+      role: 'Front-End Development Course',
+      company: 'Fabevy Institute of Technology, Tenkasi',
+      description: 'Completed a comprehensive six-month course focusing on modern front-end technologies, strengthening skills in HTML, CSS, JavaScript, and React to build responsive web applications.',
+      highlight: false
+    },
+    {
+      year: 'Graduated 2023',
+      role: 'BE in Mechanical Engineering (8.1 CGPA)',
+      company: 'JP College of Engineering, Ayikudi',
+      description: 'Completed bachelor\'s degree with a strong academic record, developing analytical and problem-solving skills before transitioning into software development.',
       highlight: false
     }
   ];
@@ -41,7 +48,7 @@ const Experience = () => {
 
       <div style={{ textAlign: 'center', marginBottom: '5rem', position: 'relative', zIndex: 10 }}>
         <h2 style={{ fontSize: '3.5rem', fontWeight: 800 }}>
-          Work <span className="text-accent">Experience.</span>
+          Experience <span className="text-accent">& Education.</span>
         </h2>
       </div>
 

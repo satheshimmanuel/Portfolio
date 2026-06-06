@@ -4,13 +4,12 @@ import { Briefcase, RefreshCw, BarChart, Code, Server, ServerCog } from 'lucide-
 
 const Services = () => {
   const servicesList = [
-    { title: 'ERP Systems', desc: 'Custom enterprise software for construction, inventory, and HR.', icon: <Briefcase size={32} /> },
-    { title: 'Workflow Automation', desc: 'Connecting disconnected APIs to reduce manual data entry by 80%.', icon: <RefreshCw size={32} /> },
-    { title: 'Data Dashboards', desc: 'Real-time analytics and complex chart visualizations.', icon: <BarChart size={32} /> },
-    { title: 'E-Commerce Platforms', desc: 'High-conversion stores optimized for spices, clothing, and retail.', icon: <Code size={32} /> },
-    { title: 'Static Sites & Portfolios', desc: 'Lightning-fast, SEO-optimized landing pages and personal portfolios.', icon: <Code size={32} /> },
-    { title: 'RESTful APIs', desc: 'Secure, versioned APIs with complex MongoDB aggregations.', icon: <Server size={32} /> },
-    { title: 'Cloud Administration', desc: 'AWS EC2 setups, Nginx reverse proxies, and PM2 deployments.', icon: <ServerCog size={32} /> }
+    { title: 'E-Commerce Platforms', desc: 'Scalable, high-conversion online stores with secure payment integration.', icon: <Briefcase size={32} /> },
+    { title: 'CRM & Data Management', desc: 'Custom CRM solutions to manage customer interactions and streamline data workflows.', icon: <BarChart size={32} /> },
+    { title: 'Quotation Generators', desc: 'Dynamic, automated quotation systems tailored for B2B client proposals.', icon: <RefreshCw size={32} /> },
+    { title: 'Billing Solutions', desc: 'Secure and efficient billing and invoicing systems designed for complex business logic.', icon: <Server size={32} /> },
+    { title: 'ERP Systems', desc: 'Custom enterprise software for workflow automation and resource planning.', icon: <ServerCog size={32} /> },
+    { title: 'Web Applications', desc: 'Lightning-fast, SEO-optimized web apps using modern frameworks.', icon: <Code size={32} /> }
   ];
 
   return (

@@ -87,10 +87,9 @@ const Navigation = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           
           <div style={{ display: 'none', alignItems: 'center', gap: '0.75rem', marginRight: '1rem', borderRight: '1px solid var(--border-color)', paddingRight: '1rem' }} className="desktop-socials">
-            <a href="#" className="nav-social" title="LinkedIn"><FaLinkedin size={18} /></a>
-            <a href="#" className="nav-social" title="GitHub"><FaGithub size={18} /></a>
-            <a href="#" className="nav-social" title="Instagram"><FaInstagram size={18} /></a>
-            <a href="#" className="nav-social" title="Indeed"><SiIndeed size={18} /></a>
+            <a href="https://www.linkedin.com/in/sathesh-immanuel-0680672b4/" target="_blank" rel="noopener noreferrer" className="nav-social" title="LinkedIn"><FaLinkedin size={18} /></a>
+            <a href="https://github.com/satheshimmanuel" target="_blank" rel="noopener noreferrer" className="nav-social" title="GitHub"><FaGithub size={18} /></a>
+            <a href="https://profile.indeed.com/?hl=en_IN&co=IN&from=gnav-homepage" target="_blank" rel="noopener noreferrer" className="nav-social" title="Indeed"><SiIndeed size={18} /></a>
           </div>
 
           {/* Theme Toggle */}

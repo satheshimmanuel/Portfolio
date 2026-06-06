@@ -25,14 +25,14 @@ const Hero = () => {
           </span>
 
           <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: '1rem', color: 'var(--text-primary)' }}>
-            Hi, I'm Sathesh <br />
+            Hi, I'm Sathesh Immanvel <br />
             <span className="text-accent" style={{ display: 'inline-block', minHeight: '1.2em', fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
-              <Typewriter words={['Full stack developer', 'Freelancer', 'Web Application Developer']} loop={0} cursor cursorStyle='_' typeSpeed={70} deleteSpeed={50} delaySpeed={2000} />
+              <Typewriter words={['Full Stack Developer', 'MERN Stack Developer']} loop={0} cursor cursorStyle='_' typeSpeed={70} deleteSpeed={50} delaySpeed={2000} />
             </span>
           </h1>
           
           <p className="text-secondary" style={{ fontSize: '1.125rem', maxWidth: '500px', marginBottom: '2.5rem', lineHeight: 1.6 }}>
-            I design and develop modern, responsive web applications with a focus on user experience and performance.
+            A passionate and dedicated Full-Stack Developer with 2.5 years of hands-on experience in building scalable web applications.
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -41,7 +41,7 @@ const Hero = () => {
                 View Work <ArrowRight size={20} />
               </motion.button>
             </a>
-            <a href="#contact" style={{ textDecoration: 'none' }}>
+            <a href="/images/sathesh@immanuel.pdf" download="Sathesh_Immanuel_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
               <button style={{ padding: '1rem 2rem', borderRadius: '3rem', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '1.125rem', cursor: 'pointer' }}>
                 <Download size={20} /> Resume
               </button>
