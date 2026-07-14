@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const TechStack = () => {
   const techList = [
     'React.js', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 
-    'AWS EC2', 'PM2', 'Nginx', 'Tailwind CSS', 'Redux', 'GraphQL'
+    'MySQL', 'Material UI', 'Bootstrap', 'Git', 'Python'
   ];
 
   // Duplicate the list to create a seamless infinite loop

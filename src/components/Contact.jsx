@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, MapPin, Phone, CheckCircle } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiIndeed } from 'react-icons/si';
 
 const Contact = () => {
   const [isSent, setIsSent] = useState(false);
@@ -46,7 +47,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Email</h3>
-                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>hello@sathesh.dev</p>
+                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>satheshimman17@gmail.com</p>
                 </div>
               </div>
 
@@ -56,7 +57,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Phone</h3>
-                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>+91 98765 43210</p>
+                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>+91 9688202165</p>
                 </div>
               </div>
 
@@ -66,18 +67,21 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 style={{ fontSize: '1rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>Location</h3>
-                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Chennai, India</p>
+                  <p style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Tambaram, Chennai</p>
                 </div>
               </div>
 
             </div>
 
             <div className="glass" style={{ padding: '2rem', borderRadius: '1.5rem', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
-              <a href="#" className="social-icon" style={{ padding: '1rem', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)', transition: 'all 0.3s' }}>
+              <a href="https://www.linkedin.com/in/sathesh-immanuel-0680672b4/" target="_blank" rel="noopener noreferrer" className="social-icon" style={{ padding: '1rem', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)', transition: 'all 0.3s' }}>
                 <FaLinkedin size={24} />
               </a>
-              <a href="#" className="social-icon" style={{ padding: '1rem', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)', transition: 'all 0.3s' }}>
+              <a href="https://github.com/satheshimmanuel" target="_blank" rel="noopener noreferrer" className="social-icon" style={{ padding: '1rem', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)', transition: 'all 0.3s' }}>
                 <FaGithub size={24} />
+              </a>
+              <a href="https://profile.indeed.com/?hl=en_IN&co=IN&from=gnav-homepage" target="_blank" rel="noopener noreferrer" className="social-icon" style={{ padding: '1rem', borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)', transition: 'all 0.3s' }}>
+                <SiIndeed size={24} />
               </a>
             </div>
           </div>

@@ -2,46 +2,134 @@
   {
     "id": "ecommerce-portal",
     "title": "E-Commerce Portal",
-    "category": "Freelance",
-    "mainImage": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
-    "gallery": [
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1557023348-18e312a0fcd5?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1615486171448-4fdcbabdd041?q=80&w=600&auto=format&fit=crop"
+    "category": "Ocean Softwares",
+    "mainImage": "/images/adminNalsuvai.png",
+    "roles": [
+      "Frontend Development",
+      "Backend Development"
     ],
-    "techStack": ["React", "Node.js", "MongoDB", "Stripe API"],
+    "websites": [
+      {
+        "title": "User Website",
+        "image": "/images/Nalsuvai.png",
+        "url": "https://nalsuvai.com/"
+      },
+      {
+        "title": "Admin Dashboard",
+        "image": "/images/adminNalsuvai.png",
+        "url": "https://admin.nalsuvai.com"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
     "description": "A high-conversion e-commerce platform built from the ground up. It features dynamic inventory management, secure checkout, and a custom admin dashboard to track orders and revenue.",
     "theme": "ecommerce"
   },
   {
-    "id": "school-data-management",
-    "title": "School Data Management System",
-    "category": "Freelance",
-    "mainImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
-    "gallery": [
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1544604111-9a7ed19c81b6?q=80&w=600&auto=format&fit=crop"
+    "id": "CNI Business Forum",
+    "title": "CNI Business Forum",
+    "category": "Ocean Softwares",
+    "mainImage": "/images/cni.png",
+    "roles": [
+      "Frontend Development",
+      "Database Architecture"
     ],
-    "techStack": ["Next.js", "PostgreSQL", "Tailwind CSS"],
+    "websites": [
+      {
+        "title": "CNI Business Forum",
+        "image": "/images/Cni.png",
+        "url": "cnibusinessforum.com"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
     "description": "A comprehensive portal for educational institutions to manage student records, track attendance, and process grading. Replaced a legacy paper system with a secure digital database.",
     "theme": "education"
   },
   {
-    "id": "quotation-generator",
-    "title": "Dynamic Quotation Generator",
-    "category": "Freelance",
-    "mainImage": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
-    "gallery": [
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=600&auto=format&fit=crop"
+    "id": "Ramesh Traders POS",
+    "title": "Ramesh Traders POS",
+    "category": "Ocean Softwares",
+    "mainImage": "/images/Ramesh.png",
+    "roles": [
+      "Full Stack Development"
     ],
-    "techStack": ["React", "Express.js", "PDF-Lib"],
+    "websites": [
+      {
+        "title": "Ramesh Traders POS",
+        "image": "/images/rameshadmin.png",
+        "url": "admin.rameshtraders.in"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Express.js",
+      "PDF-Lib"
+    ],
     "description": "A workflow automation tool designed for a B2B business. It allows sales reps to instantly generate complex PDF quotations based on variable client inputs, saving hours of manual data entry.",
     "theme": "enterprise"
+  },
+  {
+    "id": "ecommerce-portal-clothing",
+    "title": "Clothing Ecommerce",
+    "category": "Ocean Softwares",
+    "mainImage": "/images/Youweb.png",
+    "roles": [
+      "Full Stack Development"
+    ],
+    "websites": [
+      {
+        "title": "E-Commerce Portal Clothing",
+        "image": "/images/Youweb.png",
+        "url": "https://youweb.in"
+      },
+      {
+        "title": "Admin Dashboard - Clothing",
+        "image": "/images/youadmin.png",
+        "url": "https://admin.nalsuvai.com"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Express.js",
+      "PDF-Lib"
+    ],
+    "description": "A workflow automation tool designed for a B2B business. It allows sales reps to instantly generate complex PDF quotations based on variable client inputs, saving hours of manual data entry.",
+    "theme": "enterprise"
+  },
+  {
+    "id": "Tiny Theatre",
+    "title": "Tiny Theatre",
+    "category": "Ocean Softwares",
+    "mainImage": "/images/tt.png",
+    "roles": [
+      "Frontend Development",
+      "Backend Development"
+    ],
+    "websites": [
+      {
+        "title": "User Website",
+        "image": "/images/tiny-theatre.png",
+        "url": "https://nalsuvai.com/"
+      },
+      {
+        "title": "Admin Dashboard",
+        "image": "/images/tiny-theatre-admin.png",
+        "url": "https://admin.nalsuvai.com"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Node.js",
+      "MongoDB"
+    ],
+    "description": "A high-conversion e-commerce platform built from the ground up. It features dynamic inventory management, secure checkout, and a custom admin dashboard to track orders and revenue.",
+    "theme": "ecommerce"
   }
 ]

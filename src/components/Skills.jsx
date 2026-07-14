@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const Skills = () => {
   const techSkills = [
-    'React.js', 'Next.js', 'Node.js', 'Express', 'MongoDB', 
-    'PostgreSQL', 'Tailwind CSS', 'AWS EC2', 'Nginx', 'PM2', 
-    'REST APIs', 'Redux', 'Framer Motion', 'Git', 'Docker'
+    'React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Bootstrap', 
+    'Material UI', 'Typescript', 'Node.js', 'Express.js', 'MySQL', 
+    'MongoDB', 'Git', 'GitHub', 'RESTful APIs', 'Postman', 'Python'
   ];
 
   return (
