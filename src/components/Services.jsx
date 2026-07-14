@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, RefreshCw, BarChart, Code, Server, ServerCog } from 'lucide-react';
+import { Briefcase, RefreshCw, BarChart, Code, Server, ServerCog, Film, Globe, ArrowRight } from 'lucide-react';
 
 const Services = () => {
   const servicesList = [
@@ -9,7 +9,9 @@ const Services = () => {
     { title: 'Quotation Generators', desc: 'Dynamic, automated quotation systems tailored for B2B client proposals.', icon: <RefreshCw size={32} /> },
     { title: 'Billing Solutions', desc: 'Secure and efficient billing and invoicing systems designed for complex business logic.', icon: <Server size={32} /> },
     { title: 'ERP Systems', desc: 'Custom enterprise software for workflow automation and resource planning.', icon: <ServerCog size={32} /> },
-    { title: 'Web Applications', desc: 'Lightning-fast, SEO-optimized web apps using modern frameworks.', icon: <Code size={32} /> }
+    { title: 'Web Applications', desc: 'Lightning-fast, SEO-optimized web apps using modern frameworks.', icon: <Code size={32} /> },
+    { title: 'Private Theatre Website', desc: 'Bespoke web platforms for private theatres, focusing on booking and premium user experiences.', icon: <Film size={32} /> },
+    { title: 'School Website', desc: 'Custom web solutions tailored for school website, focusing on modern design, performance, and seamless functionality.', icon: <Globe size={32} /> }
   ];
 
   return (
@@ -43,22 +45,74 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass"
-            style={{ padding: '3rem 2.5rem', borderRadius: '1.5rem', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
+            className="glass service-card"
+            style={{ 
+              padding: '4rem 2rem 2.5rem', 
+              borderRadius: '1.5rem', 
+              position: 'relative', 
+              display: 'flex', 
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+              marginTop: '2rem'
+            }}
           >
-            <div style={{ marginBottom: '2rem', color: 'var(--text-primary)', transition: 'all 0.3s', display: 'inline-flex', padding: '1rem', backgroundColor: 'var(--bg-tertiary)', borderRadius: '1rem', alignSelf: 'flex-start' }} className="service-icon">
+            {/* Ribbon / Tab */}
+            <div 
+              className="service-ribbon"
+              style={{ 
+                position: 'absolute', 
+                top: '0', 
+                left: '50%', 
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'var(--bg-tertiary)', 
+                border: '1px solid var(--border-color)',
+                padding: '1.25rem', 
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--accent-color)',
+                boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3)',
+                minWidth: '80px',
+                minHeight: '80px'
+              }}
+            >
               {service.icon}
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>{service.title}</h3>
-            <p className="text-secondary" style={{ lineHeight: 1.7, fontSize: '1rem' }}>{service.desc}</p>
+
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem', color: 'var(--text-primary)' }}>{service.title}</h3>
+            
+            <p className="text-secondary" style={{ lineHeight: 1.7, fontSize: '1rem', marginBottom: '2rem' }}>{service.desc}</p>
+            
+            {/* Arrow Button */}
+            <div 
+              className="service-btn"
+              style={{
+                marginTop: 'auto',
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--bg-secondary)',
+                border: '1px solid var(--border-color)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-primary)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+            >
+              <ArrowRight size={20} />
+            </div>
           </motion.div>
         ))}
       </div>
 
       <style>{`
-        .glass:hover .service-icon { color: white !important; background-color: var(--accent-color) !important; transform: scale(1.1); }
-        .glass:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-        .glass { transition: all 0.3s ease; }
+        .service-card { transition: all 0.3s ease; }
+        .service-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+        .service-ribbon { transition: all 0.3s ease; z-index: 10; }
       `}</style>
     </section>
   );
