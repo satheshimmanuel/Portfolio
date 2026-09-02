@@ -95,7 +95,7 @@ const Navigation = () => {
           {/* Theme Toggle */}
           <button 
             onClick={() => {
-              const themes = ['dark', 'midnight', 'dim', 'light'];
+              const themes = ['light', 'dark', 'midnight', 'dim'];
               const nextIndex = (themes.indexOf(theme) + 1) % themes.length;
               setTheme(themes[nextIndex]);
             }}
