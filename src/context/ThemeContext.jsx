@@ -4,11 +4,15 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setThemeState] = useState(() => {
-    return localStorage.getItem('portfolio-theme') || 'dark';
+    const saved = localStorage.getItem('portfolio-theme');
+    if (!saved || saved === 'dark') return 'light';
+    return saved;
   });
 
   const [accent, setAccentState] = useState(() => {
-    return localStorage.getItem('portfolio-accent') || 'blue';
+    const saved = localStorage.getItem('portfolio-accent');
+    if (!saved || saved === 'blue') return 'purple';
+    return saved;
   });
 
   useEffect(() => {
