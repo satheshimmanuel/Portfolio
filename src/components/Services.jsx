@@ -1,17 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, RefreshCw, BarChart, Code, Server, ServerCog, Film, Globe, ArrowRight } from 'lucide-react';
+import { ShoppingBag, GraduationCap, ServerCog, Code2, ArrowRight } from 'lucide-react';
 
 const Services = () => {
   const servicesList = [
-    { title: 'E-Commerce Platforms', desc: 'Scalable, high-conversion online stores with secure payment integration.', icon: <Briefcase size={32} /> },
-    { title: 'CRM & Data Management', desc: 'Custom CRM solutions to manage customer interactions and streamline data workflows.', icon: <BarChart size={32} /> },
-    { title: 'Quotation Generators', desc: 'Dynamic, automated quotation systems tailored for B2B client proposals.', icon: <RefreshCw size={32} /> },
-    { title: 'Billing Solutions', desc: 'Secure and efficient billing and invoicing systems designed for complex business logic.', icon: <Server size={32} /> },
-    { title: 'ERP Systems', desc: 'Custom enterprise software for workflow automation and resource planning.', icon: <ServerCog size={32} /> },
-    { title: 'Web Applications', desc: 'Lightning-fast, SEO-optimized web apps using modern frameworks.', icon: <Code size={32} /> },
-    { title: 'Private Theatre Website', desc: 'Bespoke web platforms for private theatres, focusing on booking and premium user experiences.', icon: <Film size={32} /> },
-    { title: 'School Website', desc: 'Custom web solutions tailored for school website, focusing on modern design, performance, and seamless functionality.', icon: <Globe size={32} /> }
+    { 
+      title: 'E-Commerce Platforms', 
+      desc: 'Scalable, high-conversion online stores with secure payment gateway integration, cart logic, and admin management.', 
+      icon: <ShoppingBag size={32} /> 
+    },
+    { 
+      title: 'School Data Management', 
+      desc: 'Comprehensive school web systems to manage student records, marks, attendance, and administrative tasks efficiently.', 
+      icon: <GraduationCap size={32} /> 
+    },
+    { 
+      title: 'ERP & CRM Systems', 
+      desc: 'Custom enterprise software and CRM solutions for workflow automation, customer tracking, and business resource planning.', 
+      icon: <ServerCog size={32} /> 
+    },
+    { 
+      title: 'Web Applications', 
+      desc: 'Lightning-fast, modern, and SEO-optimized full-stack web applications tailored to business requirements.', 
+      icon: <Code2 size={32} /> 
+    }
   ];
 
   return (
@@ -31,8 +43,8 @@ const Services = () => {
       />
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'var(--bg-overlay)', pointerEvents: 'none' }} />
 
-      <div style={{ marginBottom: '5rem', textAlign: 'center', position: 'relative', zIndex: 10 }}>
-        <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+      <div style={{ marginBottom: '4rem', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <h2 className="section-title">
           Comprehensive <span className="text-accent">Services</span>
         </h2>
       </div>
@@ -41,10 +53,11 @@ const Services = () => {
         {servicesList.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ y: -10, transition: { type: "spring", stiffness: 300 } }}
+            transition={{ duration: 0.6, delay: index * 0.08 }}
             className="glass service-card"
             style={{ 
               padding: '4rem 2rem 2.5rem', 
@@ -58,35 +71,37 @@ const Services = () => {
             }}
           >
             {/* Ribbon / Tab */}
-            <div 
+            <motion.div 
+              whileHover={{ rotate: 10, scale: 1.1 }}
               className="service-ribbon"
               style={{ 
                 position: 'absolute', 
                 top: '0', 
                 left: '50%', 
                 transform: 'translate(-50%, -50%)',
-                backgroundColor: 'var(--bg-tertiary)', 
-                border: '1px solid var(--border-color)',
+                backgroundColor: 'var(--bg-secondary)', 
+                border: '1.5px solid var(--border-color)',
                 padding: '1.25rem', 
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'var(--accent-color)',
-                boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3)',
+                boxShadow: 'var(--card-shadow)',
                 minWidth: '80px',
                 minHeight: '80px'
               }}
             >
               {service.icon}
-            </div>
+            </motion.div>
 
             <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem', color: 'var(--text-primary)' }}>{service.title}</h3>
             
             <p className="text-secondary" style={{ lineHeight: 1.7, fontSize: '1rem', marginBottom: '2rem' }}>{service.desc}</p>
             
             {/* Arrow Button */}
-            <div 
+            <motion.div 
+              whileHover={{ x: 5, backgroundColor: 'var(--accent-color)', color: '#ffffff' }}
               className="service-btn"
               style={{
                 marginTop: 'auto',
@@ -104,7 +119,7 @@ const Services = () => {
               }}
             >
               <ArrowRight size={20} />
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>

@@ -5,8 +5,8 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [theme, setThemeState] = useState(() => {
     const saved = localStorage.getItem('portfolio-theme');
-    if (!saved || saved === 'dark') return 'light';
-    return saved;
+    if (saved === 'dark' || saved === 'light') return saved;
+    return 'dark';
   });
 
   const [accent, setAccentState] = useState(() => {

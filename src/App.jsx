@@ -13,18 +13,54 @@ import CommandMenu from './components/CommandMenu';
 import { ThemeProvider } from './context/ThemeContext';
 import { AnimatePresence, motion } from 'framer-motion';
 
-// Global Background Animation
+// Global Background Animation & Ambient Mesh
 const GlobalBackground = () => (
   <div style={{ position: 'fixed', inset: 0, zIndex: -10, pointerEvents: 'none', overflow: 'hidden' }}>
-    {[...Array(20)].map((_, i) => (
+    {/* Soft Ambient Mesh Blobs for Rich Depth */}
+    <div style={{
+      position: 'absolute',
+      top: '-15%',
+      left: '-10%',
+      width: '50vw',
+      height: '50vw',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
+      opacity: 0.12,
+      filter: 'blur(80px)'
+    }} />
+    <div style={{
+      position: 'absolute',
+      top: '40%',
+      right: '-15%',
+      width: '45vw',
+      height: '45vw',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)',
+      opacity: 0.1,
+      filter: 'blur(90px)'
+    }} />
+    <div style={{
+      position: 'absolute',
+      bottom: '-10%',
+      left: '20%',
+      width: '40vw',
+      height: '40vw',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, var(--accent-color) 0%, transparent 70%)',
+      opacity: 0.08,
+      filter: 'blur(80px)'
+    }} />
+
+    {/* Floating Particles */}
+    {[...Array(15)].map((_, i) => (
       <motion.div
         key={i}
         animate={{
           y: [0, -1000],
-          opacity: [0, 0.3, 0],
+          opacity: [0, 0.35, 0],
         }}
         transition={{
-          duration: Math.random() * 10 + 10,
+          duration: Math.random() * 12 + 12,
           repeat: Infinity,
           ease: 'linear',
           delay: Math.random() * 10
@@ -33,7 +69,7 @@ const GlobalBackground = () => (
           position: 'absolute',
           left: `${Math.random() * 100}%`,
           bottom: '-10%',
-          width: `${Math.random() * 4 + 1}px`,
+          width: `${Math.random() * 4 + 2}px`,
           height: `${Math.random() * 20 + 10}px`,
           backgroundColor: 'var(--accent-color)',
           borderRadius: '10px'
@@ -89,23 +125,33 @@ const PageWrapper = ({ children }) => {
   );
 };
 
+const MainPage = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <section id="hero"><Hero /></section>
+      <section id="about"><About /></section>
+      <Skills />
+      <section id="services"><Services /></section>
+      <section id="projects"><Projects /></section>
+      <section id="experience"><Experience /></section>
+      <section id="contact"><Contact /></section>
+    </motion.div>
+  );
+};
+
 const AnimatedRoutes = () => {
   const location = useLocation();
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<PageWrapper><Hero /></PageWrapper>} />
-        <Route path="/about" element={<PageWrapper><><About /><Skills /></></PageWrapper>} />
-        <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
-        <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
+        <Route path="/" element={<PageWrapper><MainPage /></PageWrapper>} />
         <Route path="/projects/:id" element={<PageWrapper><ProjectDetail /></PageWrapper>} />
-        <Route path="/experience" element={<PageWrapper><Experience /></PageWrapper>} />
-        <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );

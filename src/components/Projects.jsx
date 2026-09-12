@@ -17,33 +17,12 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const flattenedProjects = [];
-  projectsData.forEach(project => {
-    if (project.websites && project.websites.length > 0) {
-      project.websites.forEach(site => {
-        flattenedProjects.push({
-          ...project,
-          id: `${project.id}-${site.title.toLowerCase().replace(/\s+/g, '-')}`,
-          displayTitle: `${project.title} - ${site.title}`,
-          displayImage: site.image,
-          url: site.url
-        });
-      });
-    } else {
-      flattenedProjects.push({
-        ...project,
-        displayTitle: project.title,
-        displayImage: project.mainImage,
-        url: '#'
-      });
-    }
-  });
-
-  const categories = ['All', ...new Set(flattenedProjects.map(p => p.category).filter(Boolean))];
+  // Use main projects grouped together (not flattened into separate cards)
+  const categories = ['All', ...new Set(projectsData.map(p => p.category).filter(Boolean))];
 
   const filteredProjects = activeCategory === 'All'
-    ? flattenedProjects
-    : flattenedProjects.filter(p => p.category === activeCategory);
+    ? projectsData
+    : projectsData.filter(p => p.category === activeCategory);
 
   const badgeGradients = [
     'linear-gradient(135deg, #a855f7, #6366f1)',
@@ -67,8 +46,8 @@ const Projects = () => {
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'var(--bg-overlay)', pointerEvents: 'none' }} />
 
       <div style={{ textAlign: 'center', marginBottom: '3rem', position: 'relative', zIndex: 10 }}>
-        <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Selected Work</h2>
-        <p className="text-secondary" style={{ fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto' }}>
+        <h2 className="section-title">Selected Work</h2>
+        <p className="section-subtitle">
           Explore some of my recent freelance and corporate projects, ranging from custom ERPs to interactive web applications.
         </p>
       </div>
@@ -131,14 +110,16 @@ const Projects = () => {
 
                 {/* Content Area */}
                 <div className="card-content-body">
-                  <h3 className="card-title" title={project.displayTitle}>{project.displayTitle}</h3>
+                  <h3 className="card-title" title={project.title}>{project.title}</h3>
                   <p className="card-description">{project.description}</p>
 
-                  {/* Roles / Highlights Pills */}
-                  {project.roles && project.roles.length > 0 && (
-                    <div className="card-roles-list">
-                      {project.roles.map((role, rIdx) => (
-                        <span key={rIdx} className="role-pill">{role}</span>
+                  {/* Sub-panels badge (e.g., User & Admin grouped) */}
+                  {project.websites && project.websites.length > 0 && (
+                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+                      {project.websites.map((site, sIdx) => (
+                        <span key={sIdx} style={{ fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.6rem', borderRadius: '0.5rem', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', color: 'var(--accent-color)' }}>
+                          {site.title}
+                        </span>
                       ))}
                     </div>
                   )}
@@ -156,7 +137,7 @@ const Projects = () => {
 
                 {/* Footer Action Row */}
                 <div className="card-footer">
-                  <span className="view-details-text">View Details</span>
+                  <span className="view-details-text">View Project & Panels</span>
                   <motion.div 
                     className="arrow-circle-btn"
                     whileHover={{ scale: 1.1, x: 3 }}
@@ -234,87 +215,56 @@ const Projects = () => {
                 <X size={24} strokeWidth={1.5} />
               </button>
               
-              <div className="modal-split-layout">
-                {/* Left Column: Laptop Mockup Frame */}
-                <div className="modal-left-col">
-                  <div className="laptop-mockup-wrapper">
-                    <div className="laptop-screen">
-                      <div className="laptop-camera" />
-                      <div className="laptop-display">
-                        <img 
-                          src={selectedProject.displayImage} 
-                          alt={selectedProject.displayTitle} 
-                          className="laptop-screen-img" 
-                        />
-                      </div>
-                    </div>
-                    <div className="laptop-base">
-                      <div className="laptop-notch" />
-                    </div>
+              <div className="modal-full-layout" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <span className="card-category-tag" style={{ alignSelf: 'flex-start' }}>
+                  {selectedProject.category}
+                </span>
+
+                <h2 className="text-gradient" style={{ fontSize: '2.25rem', fontWeight: 800, lineHeight: 1.2 }}>
+                  {selectedProject.title}
+                </h2>
+
+                <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
+                  {selectedProject.description}
+                </p>
+
+                {/* Languages & Tech Stack */}
+                <div>
+                  <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+                    Languages & Technologies
+                  </h4>
+                  <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    {selectedProject.techStack?.map((tech, i) => (
+                      <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', borderRadius: '2rem', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontSize: '0.875rem', fontWeight: 500 }}>
+                        <span className="tech-dot" style={{ backgroundColor: getDotColor(tech) }} />
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                {/* Right Column: Content & Languages/Tech Stack */}
-                <div className="modal-right-col">
-                  <span className="card-category-tag" style={{ alignSelf: 'flex-start', marginBottom: '1rem' }}>
-                    {selectedProject.category}
-                  </span>
-
-                  <h2 className="text-gradient" style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>
-                    {selectedProject.displayTitle}
-                  </h2>
-
-                  <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '1.75rem' }}>
-                    {selectedProject.description}
-                  </p>
-
-                  {/* Languages & Tech Stack */}
-                  <div style={{ marginBottom: '1.75rem' }}>
-                    <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
-                      Languages & Technologies
+                {/* Live Websites / Panels (Grouped User Website & Admin Dashboard Buttons) */}
+                {selectedProject.websites && selectedProject.websites.length > 0 && (
+                  <div style={{ marginTop: '0.5rem' }}>
+                    <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.85rem' }}>
+                      Project Panels & Live Demos
                     </h4>
-                    <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
-                      {selectedProject.techStack?.map((tech, i) => (
-                        <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', borderRadius: '2rem', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontSize: '0.875rem', fontWeight: 500 }}>
-                          <span className="tech-dot" style={{ backgroundColor: getDotColor(tech) }} />
-                          {tech}
-                        </span>
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                      {selectedProject.websites.map((site, sIdx) => (
+                        <a key={sIdx} href={site.url.startsWith('http') ? site.url : `https://${site.url}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                          <motion.button 
+                            whileHover={{ scale: 1.04 }} 
+                            whileTap={{ scale: 0.98 }}
+                            className="bg-accent" 
+                            style={{ padding: '0.85rem 1.75rem', borderRadius: '2rem', color: 'white', border: 'none', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem', boxShadow: '0 6px 15px -4px var(--accent-color)' }}
+                          >
+                            {site.title} <ExternalLink size={16} />
+                          </motion.button>
+                        </a>
                       ))}
                     </div>
                   </div>
-
-                  {/* Roles / Responsibilities */}
-                  {selectedProject.roles && selectedProject.roles.length > 0 && (
-                    <div style={{ marginBottom: '2rem' }}>
-                      <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
-                        Roles & Responsibilities
-                      </h4>
-                      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                        {selectedProject.roles.map((role, rIdx) => (
-                          <span key={rIdx} className="role-pill" style={{ fontSize: '0.85rem', padding: '0.4rem 0.85rem' }}>
-                            {role}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Live Website Button */}
-                  {selectedProject.url && selectedProject.url !== '#' && (
-                    <div>
-                      <a href={selectedProject.url.startsWith('http') ? selectedProject.url : `https://${selectedProject.url}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'inline-block' }}>
-                        <motion.button 
-                          whileHover={{ scale: 1.04 }} 
-                          whileTap={{ scale: 0.98 }}
-                          className="bg-accent" 
-                          style={{ padding: '0.85rem 2rem', borderRadius: '2rem', color: 'white', border: 'none', fontWeight: 600, fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem', boxShadow: '0 8px 20px -5px var(--accent-color)' }}
-                        >
-                          Visit Live Website <ExternalLink size={18} />
-                        </motion.button>
-                      </a>
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
