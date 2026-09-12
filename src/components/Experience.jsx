@@ -46,8 +46,8 @@ const Experience = () => {
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 'var(--bg-image-opacity)', pointerEvents: 'none' }} />
       <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'radial-gradient(circle, transparent 0%, var(--bg-primary) 80%)', pointerEvents: 'none' }} />
 
-      <div style={{ textAlign: 'center', marginBottom: '5rem', position: 'relative', zIndex: 10 }}>
-        <h2 style={{ fontSize: '3.5rem', fontWeight: 800 }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 10 }}>
+        <h2 className="section-title">
           Experience <span className="text-accent">& Education.</span>
         </h2>
       </div>
@@ -75,29 +75,47 @@ const Experience = () => {
               className="timeline-item"
             >
               {/* Central Timeline Dot */}
-              <div className="timeline-dot" style={{
-                position: 'absolute',
-                left: '50%',
-                top: '0',
-                width: '24px',
-                height: '24px',
-                borderRadius: '50%',
-                backgroundColor: exp.highlight ? 'var(--accent-color)' : 'var(--bg-secondary)',
-                border: `4px solid var(--bg-primary)`,
-                transform: 'translateX(-50%)',
-                zIndex: 2,
-                boxShadow: exp.highlight ? '0 0 15px var(--accent-color)' : 'none'
-              }} />
+              <motion.div 
+                className="timeline-dot" 
+                initial={{ backgroundColor: 'var(--bg-secondary)', scale: 1 }}
+                whileInView={{ 
+                  backgroundColor: 'var(--accent-color)', 
+                  boxShadow: '0 0 20px var(--accent-color)',
+                  scale: 1.25
+                }}
+                viewport={{ amount: 0.6, margin: "-10% 0px -20% 0px" }}
+                transition={{ duration: 0.4 }}
+                style={{
+                  position: 'absolute',
+                  left: '49%',
+                  top: '2.6rem',
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
+                  border: `3px solid var(--bg-primary)`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 2,
+                }} 
+              />
 
               {/* Content Box */}
-              <div 
+              <motion.div 
                 className="glass timeline-content" 
+                initial={{ borderColor: 'var(--border-color)', y: 20 }}
+                whileInView={{ 
+                  borderColor: 'var(--accent-color)',
+                  boxShadow: '0 10px 30px -10px rgba(249, 115, 22, 0.25)',
+                  y: 0
+                }}
+                viewport={{ amount: 0.4, margin: "-10% 0px -20% 0px" }}
+                transition={{ duration: 0.4 }}
                 style={{ 
                   width: '45%', 
-                  padding: '2.5rem', 
+                  padding: '2rem 2.5rem', 
                   borderRadius: '1.5rem', 
-                  border: exp.highlight ? '1px solid var(--accent-color)' : '1px solid var(--border-color)', 
-                  transition: 'transform 0.3s', 
+                  border: '1px solid var(--border-color)',
+                  position: 'relative',
+                  backgroundColor: 'var(--bg-secondary)'
                 }}
               >
                 <div style={{ display: 'inline-block', padding: '0.5rem 1rem', borderRadius: '2rem', backgroundColor: 'var(--bg-tertiary)', color: 'var(--accent-color)', fontWeight: 700, fontSize: '0.875rem', marginBottom: '1rem' }}>
@@ -106,14 +124,14 @@ const Experience = () => {
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{exp.role}</h3>
                 <div className="text-secondary" style={{ fontSize: '1.125rem', marginBottom: '1.5rem', fontWeight: 500 }}>{exp.company}</div>
                 <p className="text-secondary" style={{ lineHeight: 1.8, fontSize: '1rem' }}>{exp.description}</p>
-              </div>
+              </motion.div>
             </motion.div>
           );
         })}
       </div>
 
       <style>{`
-        .timeline-content:hover { transform: translateY(-5px); }
+        .timeline-content:hover { transform: translateY(-5px) !important; }
         @media (max-width: 768px) {
           .timeline-line { left: 20px !important; transform: none !important; }
           .timeline-item { justify-content: flex-end !important; }

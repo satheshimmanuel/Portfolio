@@ -26,11 +26,11 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
         style={{ width: '100%', maxWidth: '1000px' }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <h2 style={{ fontSize: '3rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '1rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <h2 className="section-title">
             Get In <span className="text-accent">Touch.</span>
           </h2>
-          <p className="text-secondary" style={{ fontSize: '1.125rem' }}>
+          <p className="section-subtitle">
             Have a project in mind? Fill out the form below and I'll get back to you shortly.
           </p>
         </div>
