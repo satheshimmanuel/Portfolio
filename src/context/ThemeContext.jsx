@@ -11,7 +11,7 @@ export const ThemeProvider = ({ children }) => {
 
   const [accent, setAccentState] = useState(() => {
     const saved = localStorage.getItem('portfolio-accent');
-    if (!saved || saved === 'blue') return 'purple';
+    if (!saved) return 'blue';
     return saved;
   });
 

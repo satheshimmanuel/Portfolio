@@ -1,157 +1,166 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X, ExternalLink, LayoutDashboard, GitBranch, FileText, Headphones, Tv } from 'lucide-react';
+import { ArrowRight, X, ExternalLink, Sparkles, CheckCircle2, Briefcase } from 'lucide-react';
 import projectsData from '../data/projects.json';
-
-const getDotColor = (techName) => {
-  const lower = techName.toLowerCase();
-  if (lower.includes('react')) return '#3b82f6';
-  if (lower.includes('node') || lower.includes('express')) return '#10b981';
-  if (lower.includes('mongo') || lower.includes('database')) return '#22c55e';
-  if (lower.includes('pdf')) return '#ef4444';
-  if (lower.includes('chart')) return '#a855f7';
-  return 'var(--accent-color)';
-};
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
 
-  // Use main projects grouped together (not flattened into separate cards)
-  const categories = ['All', ...new Set(projectsData.map(p => p.category).filter(Boolean))];
+  const categories = ['All', 'Ocean Softwares'];
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
     : projectsData.filter(p => p.category === activeCategory);
 
-  const badgeGradients = [
-    'linear-gradient(135deg, #a855f7, #6366f1)',
-    'linear-gradient(135deg, #22c55e, #10b981)',
-    'linear-gradient(135deg, #f59e0b, #d97706)',
-    'linear-gradient(135deg, #3b82f6, #06b6d4)',
-    'linear-gradient(135deg, #ec4899, #d946ef)',
-  ];
-
-  const badgeIcons = [
-    <LayoutDashboard size={20} color="white" />,
-    <GitBranch size={20} color="white" />,
-    <FileText size={20} color="white" />,
-    <Headphones size={20} color="white" />,
-    <Tv size={20} color="white" />,
-  ];
-
   return (
-    <section className="container section" style={{ position: 'relative' }}>
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2000&auto=format&fit=crop")', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 'var(--bg-image-opacity)', pointerEvents: 'none' }} />
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, background: 'var(--bg-overlay)', pointerEvents: 'none' }} />
-
-      <div style={{ textAlign: 'center', marginBottom: '3rem', position: 'relative', zIndex: 10 }}>
-        <h2 className="section-title">Selected Work</h2>
-        <p className="section-subtitle">
-          Explore some of my recent freelance and corporate projects, ranging from custom ERPs to interactive web applications.
-        </p>
+    <section id="projects" className="container section" style={{ position: 'relative' }}>
+      
+      {/* Tunis Section Header */}
+      <div className="tunis-section-title-wrap">
+        <div className="tunis-watermark">WORKS</div>
+        <h2 className="tunis-title-foreground">
+          MY <span>PORTFOLIO</span>
+        </h2>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '4rem', position: 'relative', zIndex: 10 }}>
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              borderRadius: '2rem',
-              border: activeCategory === category ? '1px solid var(--accent-color)' : '1px solid var(--border-color)',
-              background: activeCategory === category ? 'var(--bg-tertiary)' : 'var(--bg-secondary)',
-              color: activeCategory === category ? 'var(--accent-color)' : 'var(--text-secondary)',
-              fontWeight: 600,
-              fontSize: '0.9rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              backdropFilter: 'blur(10px)',
-              boxShadow: activeCategory === category ? '0 0 20px -5px var(--accent-color)' : 'none'
-            }}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+      {/* Filter Tabs */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        style={{ display: 'flex', justifyContent: 'center', gap: '0.65rem', flexWrap: 'wrap', marginBottom: '2.75rem', position: 'relative', zIndex: 10 }}
+      >
+        {categories.map((category) => {
+          const isActive = activeCategory === category;
+          return (
+            <motion.button
+              key={category}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              onClick={() => setActiveCategory(category)}
+              style={{
+                padding: '0.55rem 1.35rem',
+                borderRadius: '9999px',
+                background: isActive ? 'var(--accent-gradient)' : 'var(--bg-card)',
+                border: isActive ? '1px solid transparent' : '1px solid var(--border-color)',
+                color: isActive ? '#14171C' : 'var(--text-secondary)',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                cursor: 'pointer',
+                transition: 'all 0.25s ease',
+                boxShadow: isActive ? '0 6px 18px -4px rgba(var(--accent-color-rgb), 0.4)' : 'none'
+              }}
+            >
+              {category}
+            </motion.button>
+          );
+        })}
+      </motion.div>
 
-      {/* Grid Layout */}
+      {/* Projects Grid */}
       <motion.div layout className="projects-grid" style={{ position: 'relative', zIndex: 10 }}>
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => {
-            const gradient = badgeGradients[index % badgeGradients.length];
-            const icon = badgeIcons[index % badgeIcons.length];
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.45, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              key={project.id}
+              className="project-card-item"
+              onClick={() => setSelectedProject(project)}
+            >
+              {/* Header: Category Badge + Status */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <span className="project-category-tag">
+                  {project.category}
+                </span>
+                <span style={{ fontSize: '0.72rem', color: 'var(--accent-color)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#10B981', display: 'inline-block', boxShadow: '0 0 8px #10B981' }} />
+                  Live System
+                </span>
+              </div>
 
-            return (
-              <motion.div 
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3, type: "spring", stiffness: 260, damping: 20 }}
-                key={project.id}
-                className="new-project-card"
-                onClick={() => setSelectedProject(project)}
-              >
-                {/* Header Row: Icon Badge + Category Tag */}
-                <div className="card-top-header">
-                  <motion.div 
-                    className="card-icon-badge" 
-                    style={{ background: gradient }}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  >
-                    {icon}
-                  </motion.div>
-                  <span className="card-category-tag">{project.category}</span>
+              {/* Project Title */}
+              <h3 className="project-card-title">
+                {project.title}
+              </h3>
+
+              {/* Project Description */}
+              <p className="project-card-desc">
+                {project.description}
+              </p>
+
+              {/* Panels Badges */}
+              {project.websites && project.websites.length > 0 && (
+                <div style={{ display: 'flex', gap: '0.45rem', flexWrap: 'wrap', marginBottom: '1.1rem' }}>
+                  {project.websites.map((site, sIdx) => (
+                    <span
+                      key={sIdx}
+                      style={{
+                        fontSize: '0.7rem',
+                        fontWeight: 600,
+                        padding: '0.2rem 0.55rem',
+                        borderRadius: '0.4rem',
+                        background: 'var(--bg-tertiary)',
+                        border: '1px solid var(--border-color)',
+                        color: 'var(--text-primary)'
+                      }}
+                    >
+                      ⚡ {site.title}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Bottom: Tech Stack & Action Footer */}
+              <div style={{ marginTop: 'auto' }}>
+                {/* Tech Stack List */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1rem', paddingTop: '0.85rem', borderTop: '1px solid var(--border-color)' }}>
+                  {project.techStack?.map((tech, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.3rem',
+                        fontSize: '0.72rem',
+                        fontWeight: 500,
+                        color: 'var(--text-secondary)',
+                        background: 'var(--bg-tertiary)',
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: '0.35rem',
+                        border: '1px solid var(--border-color)'
+                      }}
+                    >
+                      <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: 'var(--accent-color)' }} />
+                      {tech}
+                    </span>
+                  ))}
                 </div>
 
-                {/* Content Area */}
-                <div className="card-content-body">
-                  <h3 className="card-title" title={project.title}>{project.title}</h3>
-                  <p className="card-description">{project.description}</p>
-
-                  {/* Sub-panels badge (e.g., User & Admin grouped) */}
-                  {project.websites && project.websites.length > 0 && (
-                    <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
-                      {project.websites.map((site, sIdx) => (
-                        <span key={sIdx} style={{ fontSize: '0.75rem', fontWeight: 600, padding: '0.25rem 0.6rem', borderRadius: '0.5rem', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', color: 'var(--accent-color)' }}>
-                          {site.title}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tech Stack Horizontal Line with Colored Dots */}
-                  <div className="card-tech-list">
-                    {project.techStack?.map((tech, i) => (
-                      <span key={i} className="tech-item">
-                        <span className="tech-dot" style={{ backgroundColor: getDotColor(tech) }} />
-                        {tech}
-                      </span>
-                    ))}
+        {/* Footer Action */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem' }}>
+                  <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--accent-color)' }}>
+                    View Details & Panels
+                  </span>
+                  <div className="project-arrow-btn" aria-hidden="true">
+                    <ArrowRight size={15} />
                   </div>
                 </div>
+              </div>
 
-                {/* Footer Action Row */}
-                <div className="card-footer">
-                  <span className="view-details-text">View Project & Panels</span>
-                  <motion.div 
-                    className="arrow-circle-btn"
-                    whileHover={{ scale: 1.1, x: 3 }}
-                  >
-                    <ArrowRight size={16} />
-                  </motion.div>
-                </div>
-              </motion.div>
-            );
-          })}
+            </motion.div>
+          ))}
         </AnimatePresence>
       </motion.div>
 
-      {/* Modal */}
+      {/* Interactive Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -162,109 +171,157 @@ const Projects = () => {
             style={{
               position: 'fixed',
               inset: 0,
-              backgroundColor: 'rgba(0,0,0,0.65)',
-              zIndex: 100,
+              backgroundColor: 'rgba(17, 26, 36, 0.75)',
+              zIndex: 1000,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '1.5rem',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)'
+              padding: '1rem',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)'
             }}
           >
             <motion.div
               initial={{ scale: 0.95, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.95, y: 20, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
-              className="project-modal-content"
+              className="glass"
               style={{
-                width: '90vw',
-                maxWidth: '1100px',
-                maxHeight: '90vh',
+                width: '100%',
+                maxWidth: '820px',
+                maxHeight: '88vh',
                 overflowY: 'auto',
-                borderRadius: '24px',
                 position: 'relative',
-                backgroundColor: 'var(--bg-primary)',
-                border: '1px solid var(--border-color)',
-                boxShadow: '0 25px 60px rgba(0,0,0,0.25)',
-                padding: '3rem 2.5rem 2.5rem 2.5rem',
+                padding: '2rem 1.5rem',
+                borderRadius: '1.5rem',
+                backgroundColor: 'var(--bg-secondary)',
+                boxShadow: 'var(--card-shadow)'
               }}
             >
-              <button 
+              {/* Close Button */}
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setSelectedProject(null)}
                 style={{
                   position: 'absolute',
-                  top: '1.5rem',
-                  right: '1.5rem',
-                  background: 'var(--bg-secondary)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid var(--border-color)',
-                  color: 'var(--text-secondary)',
-                  padding: '0.75rem',
+                  top: '1.25rem',
+                  right: '1.25rem',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  cursor: 'pointer',
-                  zIndex: 20,
+                  background: 'var(--bg-tertiary)',
+                  border: '1px solid var(--border-color)',
+                  color: 'var(--text-primary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  transition: 'all 0.3s'
+                  cursor: 'pointer',
+                  zIndex: 20
                 }}
               >
-                <X size={24} strokeWidth={1.5} />
-              </button>
-              
-              <div className="modal-full-layout" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <span className="card-category-tag" style={{ alignSelf: 'flex-start' }}>
-                  {selectedProject.category}
-                </span>
+                <X size={18} />
+              </motion.button>
 
-                <h2 className="text-gradient" style={{ fontSize: '2.25rem', fontWeight: 800, lineHeight: 1.2 }}>
-                  {selectedProject.title}
-                </h2>
-
-                <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                  {selectedProject.description}
-                </p>
-
-                {/* Languages & Tech Stack */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                
+                {/* Header */}
                 <div>
-                  <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
-                    Languages & Technologies
+                  <span className="project-category-tag">
+                    {selectedProject.category}
+                  </span>
+
+                  <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800, color: 'var(--text-primary)', marginTop: '0.65rem', lineHeight: 1.2 }}>
+                    {selectedProject.title}
+                  </h2>
+                </div>
+
+                {/* Project Screenshot / Mockup */}
+                {selectedProject.mainImage && (
+                  <div
+                    style={{
+                      borderRadius: '1rem',
+                      overflow: 'hidden',
+                      border: '1px solid var(--border-color)',
+                      maxHeight: '320px',
+                      background: 'var(--bg-primary)'
+                    }}
+                  >
+                    <img
+                      src={selectedProject.mainImage}
+                      alt={selectedProject.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                  </div>
+                )}
+
+                {/* Engineering Overview */}
+                <div>
+                  <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.45rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Project Architecture & Impact
                   </h4>
-                  <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
-                    {selectedProject.techStack?.map((tech, i) => (
-                      <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', borderRadius: '2rem', backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', fontSize: '0.875rem', fontWeight: 500 }}>
-                        <span className="tech-dot" style={{ backgroundColor: getDotColor(tech) }} />
-                        {tech}
-                      </span>
-                    ))}
+                  <p style={{ fontSize: '0.925rem', color: 'var(--text-secondary)', lineHeight: 1.75 }}>
+                    {selectedProject.description}
+                  </p>
+                </div>
+
+                {/* Roles & Technologies */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.25rem', background: 'var(--bg-tertiary)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid var(--border-color)' }}>
+                  {selectedProject.roles && (
+                    <div>
+                      <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
+                        Engineering Roles
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                        {selectedProject.roles.map((r, rIdx) => (
+                          <div key={rIdx} style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                            <CheckCircle2 size={14} className="text-accent" /> {r}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div>
+                    <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.4rem' }}>
+                      Technology Stack
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                      {selectedProject.techStack?.map((t, tIdx) => (
+                        <span key={tIdx} style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)', background: 'var(--bg-secondary)', padding: '0.2rem 0.55rem', borderRadius: '0.35rem', border: '1px solid var(--border-color)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                          <span style={{ width: '5px', height: '5px', borderRadius: '50%', backgroundColor: 'var(--accent-color)' }} />
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Live Websites / Panels (Grouped User Website & Admin Dashboard Buttons) */}
+                {/* Live Panel Links */}
                 {selectedProject.websites && selectedProject.websites.length > 0 && (
-                  <div style={{ marginTop: '0.5rem' }}>
-                    <h4 style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', marginBottom: '0.85rem' }}>
-                      Project Panels & Live Demos
+                  <div>
+                    <h4 style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.75rem' }}>
+                      Deployed Panels & Live Demonstration
                     </h4>
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                       {selectedProject.websites.map((site, sIdx) => (
-                        <a key={sIdx} href={site.url.startsWith('http') ? site.url : `https://${site.url}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                          <motion.button 
-                            whileHover={{ scale: 1.04 }} 
-                            whileTap={{ scale: 0.98 }}
-                            className="bg-accent" 
-                            style={{ padding: '0.85rem 1.75rem', borderRadius: '2rem', color: 'white', border: 'none', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.6rem', boxShadow: '0 6px 15px -4px var(--accent-color)' }}
-                          >
-                            {site.title} <ExternalLink size={16} />
-                          </motion.button>
+                        <a
+                          key={sIdx}
+                          href={site.url.startsWith('http') ? site.url : `https://${site.url}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-primary"
+                          style={{ textDecoration: 'none', padding: '0.7rem 1.4rem', fontSize: '0.825rem' }}
+                        >
+                          {site.title} <ExternalLink size={14} />
                         </a>
                       ))}
                     </div>
                   </div>
                 )}
+
               </div>
             </motion.div>
           </motion.div>
@@ -275,13 +332,14 @@ const Projects = () => {
         .projects-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
+          gap: 1.75rem;
           width: 100%;
-          align-items: stretch;
         }
 
-        .new-project-card {
-          background-color: var(--bg-secondary);
+        .project-card-item {
+          background-color: var(--bg-card);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           border: 1px solid var(--border-color);
           border-radius: 1.25rem;
           padding: 1.5rem;
@@ -289,275 +347,89 @@ const Projects = () => {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
           position: relative;
-          overflow: hidden;
         }
 
-        .new-project-card:hover {
-          border-color: var(--accent-color);
-          box-shadow: 0 14px 40px -10px rgba(139, 92, 246, 0.25), 0 0 0 1px var(--accent-color);
+        .project-card-item:hover {
+          border-color: var(--border-highlight);
+          box-shadow: 0 16px 35px -10px rgba(var(--accent-color-rgb), 0.2);
         }
 
-        .card-top-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 1.25rem;
-        }
-
-        .card-icon-badge {
-          width: 48px;
-          height: 48px;
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .card-category-tag {
-          font-size: 0.75rem;
+        .project-category-tag {
+          font-size: 0.7rem;
           font-weight: 700;
-          letter-spacing: 0.05em;
           text-transform: uppercase;
+          letter-spacing: 0.05em;
           color: var(--accent-color);
-          background-color: var(--bg-tertiary);
-          padding: 0.4rem 0.85rem;
-          border-radius: 1rem;
-          border: 1px solid var(--border-color);
+          background-color: var(--accent-soft);
+          padding: 0.25rem 0.65rem;
+          border-radius: 9999px;
+          border: 1px solid var(--border-highlight);
         }
 
-        .card-content-body {
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
-        }
-
-        .card-title {
-          font-size: 1.25rem;
-          font-weight: 700;
+        .project-card-title {
+          font-size: 1.18rem;
+          font-weight: 800;
           color: var(--text-primary);
-          margin-bottom: 0.75rem;
-          line-height: 1.35;
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
         }
 
-        .card-description {
-          font-size: 0.9rem;
+        .project-card-desc {
+          font-size: 0.85rem;
           color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 1.25rem;
+          line-height: 1.65;
+          margin-bottom: 1.15rem;
           display: -webkit-box;
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
 
-        .card-roles-list {
-          display: flex;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-          margin-bottom: 1rem;
-        }
-
-        .role-pill {
-          font-size: 0.75rem;
-          color: var(--text-secondary);
+        .project-arrow-btn {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
           background-color: var(--bg-tertiary);
-          padding: 0.25rem 0.65rem;
-          border-radius: 0.5rem;
-          border: 1px solid var(--border-color);
-        }
-
-        .card-tech-list {
-          display: flex;
-          align-items: center;
-          gap: 0.85rem;
-          flex-wrap: wrap;
-          margin-bottom: 1.5rem;
-          margin-top: auto;
-        }
-
-        .tech-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          font-size: 0.8rem;
-          font-weight: 500;
-          color: var(--text-secondary);
-        }
-
-        .tech-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          display: inline-block;
-        }
-
-        .card-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 1rem;
-          border-top: 1px solid var(--border-color);
-        }
-
-        .view-details-text {
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: var(--text-primary);
-          transition: color 0.2s ease;
-        }
-
-        .new-project-card:hover .view-details-text {
-          color: var(--accent-color);
-        }
-
-        .arrow-circle-btn {
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
           border: 1px solid var(--border-color);
           display: flex;
           align-items: center;
-          justify-content: center;
+          justifyContent: center;
           color: var(--text-primary);
-          transition: all 0.3s ease;
-          background-color: var(--bg-tertiary);
+          transition: all 0.25s ease;
+          flex-shrink: 0;
+          line-height: 0;
+          box-sizing: border-box;
         }
 
-        .new-project-card:hover .arrow-circle-btn {
-          background-color: var(--accent-color);
-          color: #ffffff;
-          border-color: var(--accent-color);
-        }
-
-        /* MODAL SPLIT LAYOUT & LAPTOP MOCKUP */
-        .modal-split-layout {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2.5rem;
-          align-items: center;
-          width: 100%;
-        }
-
-        .modal-left-col {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-        }
-
-        .modal-right-col {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .laptop-mockup-wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-          width: 100%;
-          max-width: 480px;
-          margin: 0 auto;
-        }
-
-        .laptop-screen {
-          position: relative;
-          width: 100%;
-          aspect-ratio: 16 / 10;
-          background: #0f1117;
-          border-radius: 14px 14px 0 0;
-          border: 8px solid #1e202a;
-          border-bottom: none;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-          overflow: hidden;
-        }
-
-        .laptop-camera {
-          position: absolute;
-          top: 3px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 5px;
-          height: 5px;
-          background: #050508;
-          border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          z-index: 10;
-        }
-
-        .laptop-display {
-          width: 100%;
-          height: 100%;
-          background: #000;
-          overflow-y: auto;
-          position: relative;
-        }
-
-        .laptop-display::-webkit-scrollbar {
-          width: 4px;
-        }
-        .laptop-display::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.2);
-          border-radius: 2px;
-        }
-
-        .laptop-screen-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: top center;
+        .project-arrow-btn svg {
           display: block;
+          flex-shrink: 0;
+          margin: auto;
         }
 
-        .laptop-base {
-          position: relative;
-          width: 108%;
-          height: 12px;
-          background: linear-gradient(180deg, #d1d5db 0%, #9ca3af 100%);
-          border-radius: 0 0 12px 12px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-        }
-
-        [data-theme='dark'] .laptop-base,
-        [data-theme='midnight'] .laptop-base,
-        [data-theme='dim'] .laptop-base {
-          background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
-        }
-
-        .laptop-notch {
-          width: 44px;
-          height: 4px;
-          background: rgba(0, 0, 0, 0.25);
-          border-radius: 0 0 4px 4px;
+        .project-card-item:hover .project-arrow-btn {
+          background-color: var(--accent-color);
+          color: #14171C;
+          border-color: var(--accent-color);
+          transform: translateX(2px);
         }
 
         @media (max-width: 1024px) {
           .projects-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.5rem !important;
           }
         }
 
-        @media (max-width: 900px) {
-          .modal-split-layout {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-          .project-modal-content {
-            padding: 2rem 1.5rem !important;
-          }
-        }
-
-        @media (max-width: 640px) {
+        @media (max-width: 680px) {
           .projects-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .project-card-item {
+            padding: 1.25rem !important;
           }
         }
       `}</style>
