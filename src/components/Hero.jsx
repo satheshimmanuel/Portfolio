@@ -1,189 +1,332 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import { FaReact, FaJs, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiTypescript, SiMysql } from 'react-icons/si';
-
-const skillsOrbit = [
-  { icon: <FaReact color="#61dafb" size={24} />, name: 'React' },
-  { icon: <FaJs color="#f7df1e" size={24} />, name: 'JavaScript' },
-  { icon: <SiTypescript color="#3178c6" size={22} />, name: 'TypeScript' },
-  { icon: <FaNodeJs color="#339933" size={24} />, name: 'Node.js' },
-  { icon: <SiExpress color="var(--text-primary)" size={22} />, name: 'Express' },
-  { icon: <SiMongodb color="#47a248" size={24} />, name: 'MongoDB' },
-  { icon: <SiMysql color="#4479a1" size={24} />, name: 'MySQL' },
-  { icon: <FaGitAlt color="#f05032" size={24} />, name: 'Git' }
-];
+import { ArrowRight, Download, Sparkles, Code2, Database } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="hero" style={{ position: 'relative', minHeight: 'calc(100vh - 70px)', backgroundColor: 'var(--bg-primary)', overflow: 'hidden', display: 'flex', alignItems: 'center', width: '100%', transition: 'background-color 0.3s ease', padding: '2rem 0' }}>
+    <section
+      id="hero"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        padding: '2rem 1rem 3rem',
+        overflow: 'hidden'
+      }}
+    >
+      {/* Tunis Diagonal Yellow Background Shape */}
+      <div className="tunis-diagonal-bg" />
 
-      {/* Background Pattern - subtle dots */}
-      <div style={{ position: 'absolute', inset: 0, opacity: 'var(--bg-image-opacity, 0.05)', backgroundImage: 'radial-gradient(var(--text-primary) 1px, transparent 1px)', backgroundSize: '50px 50px', pointerEvents: 'none' }} />
-
-      <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap-reverse', width: '100%', height: '100%', zIndex: 10 }}>
-
-        {/* Left Content Area */}
-        <div style={{ flex: '1 1 50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', padding: '2rem 4rem', minWidth: '300px' }}>
-
+      <div
+        className="container hero-container"
+        style={{
+          position: 'relative',
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '1280px',
+          minHeight: '80vh'
+        }}
+      >
+        <div className="hero-tunis-grid">
+          {/* Left Column: Portrait Profile Card */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left', maxWidth: '600px' }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="hero-image-wrapper"
           >
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '1.5rem', letterSpacing: '-0.02em', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', gap: '10px' }}>
-              <span>Hi, I'm Sathesh @ Immanuel</span>
-              <span style={{ fontSize: '0.65em', color: 'var(--accent-color)', marginTop: '0.2rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-                A <span style={{ marginLeft: '10px', color: 'var(--text-primary)' }}><Typewriter words={['Full Stack Developer', 'MERN Stack Developer', 'Designer']} loop={0} cursor cursorStyle='|' typeSpeed={70} deleteSpeed={50} delaySpeed={2000} /></span>
-              </span>
+            <div className="hero-image-card">
+              <img
+                src="/images/image copy 5.png"
+                alt="Sathesh Immanuel - Full Stack Developer"
+                className="hero-profile-img"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/images/profile.png';
+                }}
+              />
+              <div className="hero-img-overlay" />
+            </div>
+          </motion.div>
+
+          {/* Right Column: Hero Typography & Actions */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="hero-text-content"
+          >
+            {/* Yellow Dash + Name */}
+            <div className="hero-name-badge">
+              <span className="hero-dash">—</span>
+              <span className="hero-name-text">I'M SATHESH IMMANUEL.</span>
+            </div>
+
+            {/* Main Role Title */}
+            <h1 className="hero-role-title">
+              <Typewriter
+                words={[
+                  'FULL STACK DEVELOPER',
+                  'MERN STACK ENGINEER',
+                  'ERP & CRM ARCHITECT',
+                  'UI/UX ENTHUSIAST'
+                ]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={75}
+                deleteSpeed={45}
+                delaySpeed={2200}
+              />
             </h1>
 
-            {/* Description */}
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '450px', marginBottom: '3rem', lineHeight: 1.8 }}>
-              I'm a passionate and dedicated developer with extensive experience for over 2.5 years. My expertise is to create and design scalable web applications, modern UIs, and many more...
+            {/* Description Paragraph */}
+            <p className="hero-bio-paragraph">
+              I'm a full-stack engineer and enterprise system architect focused on crafting clean, high-performance, and user-friendly digital experiences. Passionate about engineering scalable software that solves complex business problems.
             </p>
 
-            {/* Buttons */}
-            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', justifyContent: 'flex-start' }}>
-              <a href="#projects" style={{ textDecoration: 'none' }}>
-                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ padding: '0.8rem 2.5rem', borderRadius: '3rem', backgroundColor: 'var(--accent-color)', color: '#ffffff', fontWeight: 600, fontSize: '0.85rem', border: 'none', cursor: 'pointer', letterSpacing: '1px', boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)' }}>
-                  MY WORK
-                </motion.button>
+            {/* Status Pills */}
+            <div className="hero-tags-row">
+              <div className="hero-status-tag">
+                <span className="hero-status-dot" />
+                <span>Available for Full-time & Freelance</span>
+              </div>
+              <div className="hero-stat-badge">
+                <Code2 size={15} color="var(--accent-color)" />
+                <span>2.5+ Yrs Exp</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="hero-actions-row">
+              <a href="#about" className="btn-tunis">
+                <span>MORE ABOUT ME</span>
+                <div className="btn-icon-circle">
+                  <ArrowRight size={18} />
+                </div>
               </a>
-              <a href="/images/sathesh@immanuel.pdf" download="Sathesh_Immanuel_Resume.pdf" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ padding: '0.8rem 2.5rem', borderRadius: '3rem', backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.85rem', border: '1px solid var(--border-color)', cursor: 'pointer', letterSpacing: '1px' }}>
-                  HIRE ME
-                </motion.button>
+
+              <a
+                href="/images/sathesh@immanuel.pdf"
+                download="Sathesh_Immanuel_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-tunis"
+              >
+                <span>DOWNLOAD CV</span>
+                <div className="btn-icon-circle">
+                  <Download size={18} />
+                </div>
               </a>
             </div>
           </motion.div>
         </div>
-
-        {/* Right Image Area with Orbit Circle & Rotating Icons */}
-        <div style={{ flex: '1 1 50%', position: 'relative', minHeight: '560px', minWidth: '340px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1.5rem' }}>
-          <div style={{ position: 'relative', width: '100%', maxWidth: '580px', height: '580px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            
-            {/* Multi Concentric Orbit Rings behind image matching reference image */}
-            <div 
-              style={{
-                position: 'absolute',
-                width: '115%',
-                height: '115%',
-                borderRadius: '50%',
-                border: '1.5px solid var(--border-color)',
-                opacity: 0.45,
-                pointerEvents: 'none'
-              }} 
-            />
-            <div 
-              style={{
-                position: 'absolute',
-                width: '95%',
-                height: '95%',
-                borderRadius: '50%',
-                border: '1.5px solid var(--border-color)',
-                opacity: 0.55,
-                pointerEvents: 'none'
-              }} 
-            />
-            <div 
-              style={{
-                position: 'absolute',
-                width: '75%',
-                height: '75%',
-                borderRadius: '50%',
-                border: '1.5px solid var(--border-color)',
-                opacity: 0.65,
-                pointerEvents: 'none'
-              }} 
-            />
-
-            {/* Profile Image (Centered in foreground overlapping ring arcs - Perfectly Blended) */}
-            <div style={{ width: '98%', height: '100%', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 10 }}>
-              <motion.img
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                src="/images/profile.png"
-                alt="Sathesh Immanuel"
-                style={{
-                  width: '100%',
-                  maxHeight: '620px',
-                  objectFit: 'contain',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.3) 88%, transparent 100%)',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.3) 88%, transparent 100%)',
-                  filter: 'drop-shadow(0 15px 25px rgba(0,0,0,0.12))'
-                }}
-              />
-            </div>
-
-            {/* Rotating Skill Icons Container revolving around the profile image */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                borderRadius: '50%',
-                zIndex: 15
-              }}
-            >
-              {skillsOrbit.map((skill, index) => {
-                const total = skillsOrbit.length;
-                const angle = (index / total) * 360;
-                const radius = 250; // Orbit distance radius in pixels
-                const x = radius * Math.cos((angle * Math.PI) / 180);
-                const y = radius * Math.sin((angle * Math.PI) / 180);
-
-                return (
-                  <div
-                    key={index}
-                    style={{
-                      position: 'absolute',
-                      top: `calc(50% + ${y}px - 27px)`,
-                      left: `calc(50% + ${x}px - 27px)`,
-                      width: '54px',
-                      height: '54px',
-                    }}
-                  >
-                    {/* Counter-rotate badge so icons remain upright while revolving */}
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                      className="orbit-icon-badge"
-                      title={skill.name}
-                    >
-                      {skill.icon}
-                    </motion.div>
-                  </div>
-                );
-              })}
-            </motion.div>
-
-          </div>
-        </div>
-
       </div>
 
       <style>{`
-        .orbit-icon-badge {
-          width: 54px;
-          height: 54px;
-          border-radius: 50%;
-          background-color: var(--bg-secondary);
-          border: 1.5px solid var(--border-color);
+        .hero-tunis-grid {
+          display: grid;
+          grid-template-columns: 42% 58%;
+          gap: 3.5rem;
+          align-items: center;
+          width: 100%;
+          max-width: 1260px;
+          margin: 0 auto;
+        }
+
+        .hero-image-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+
+        .hero-image-card {
+          width: 100%;
+          max-width: 400px;
+          height: 520px;
+          border-radius: 30px;
+          background: #111111;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
           display: flex;
           align-items: center;
-          justify-content: center;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-          transition: transform 0.3s ease, border-color 0.3s ease;
+          justifyContent: center;
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .orbit-icon-badge:hover {
-          transform: scale(1.15);
-          border-color: var(--accent-color);
+
+        .hero-image-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 180, 0, 0.2);
+        }
+
+        .hero-profile-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+        }
+
+        .hero-img-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 40%);
+          pointer-events: none;
+        }
+
+        .hero-text-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .hero-name-badge {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .hero-dash {
+          color: var(--accent-color);
+          font-size: 2.2rem;
+          font-weight: 900;
+          line-height: 1;
+        }
+
+        .hero-name-text {
+          font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+          font-weight: 900;
+          color: var(--accent-color);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          line-height: 1.2;
+        }
+
+        .hero-role-title {
+          font-size: clamp(1.85rem, 3.5vw, 3rem);
+          font-weight: 900;
+          color: var(--text-primary);
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+          line-height: 1.15;
+          margin-bottom: 1.25rem;
+          min-height: 1.2em;
+        }
+
+        .hero-bio-paragraph {
+          font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+          color: var(--text-secondary);
+          line-height: 1.8;
+          max-width: 580px;
+          margin-bottom: 1.5rem;
+        }
+
+        .hero-tags-row {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+
+        .hero-status-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.55rem;
+          padding: 0.4rem 1rem;
+          border-radius: 9999px;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+        }
+
+        .hero-status-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10B981;
+          box-shadow: 0 0 8px #10B981;
+        }
+
+        .hero-stat-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.4rem 0.95rem;
+          border-radius: 9999px;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+
+        .hero-actions-row {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          flex-wrap: wrap;
+        }
+
+        @media (max-width: 992px) {
+          .hero-tunis-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 2rem;
+            margin-top: 1rem;
+          }
+
+          .hero-text-content {
+            align-items: center;
+            text-align: center;
+          }
+
+          .hero-name-badge {
+            justify-content: center;
+          }
+
+          .hero-tags-row {
+            justify-content: center;
+          }
+
+          .hero-actions-row {
+            justify-content: center;
+          }
+
+          .hero-image-card {
+            max-width: 280px;
+            height: 340px;
+            border-radius: 24px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .hero-image-card {
+            max-width: 220px;
+            height: 270px;
+            border-radius: 20px;
+          }
+          .hero-actions-row {
+            flex-direction: column;
+            width: 100%;
+          }
+          .btn-tunis {
+            width: 100%;
+            justify-content: space-between;
+          }
         }
       `}</style>
     </section>
@@ -191,3 +334,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

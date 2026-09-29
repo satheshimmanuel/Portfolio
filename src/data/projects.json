@@ -87,12 +87,12 @@
       {
         "title": "E-Commerce Portal Clothing",
         "image": "/images/Youweb.png",
-        "url": "https://youweb.in"
+        "url": "https://youwomenswear.com"
       },
       {
         "title": "Admin Dashboard - Clothing",
         "image": "/images/youadmin.png",
-        "url": "https://admin.nalsuvai.com"
+        "url": "https://admin.youwomenswear.com"
       }
     ],
     "techStack": [
@@ -131,5 +131,36 @@
     ],
     "description": "A high-conversion e-commerce platform built from the ground up. It features dynamic inventory management, secure checkout, and a custom admin dashboard to track orders and revenue.",
     "theme": "ecommerce"
+  },
+  {
+    "id": "charity-anbusuzhulagu",
+    "title": "Anbusuzhulagu Charity Platform",
+    "category": "Ocean Softwares",
+    "mainImage": "/images/anbusuzhulagu.png",
+    "roles": [
+      "Full Stack Development",
+      "API Development (Web & Mobile)"
+    ],
+    "websites": [
+      {
+        "title": "User Website",
+        "image": "/images/anbusuzhulagu.png",
+        "url": "https://anbusuzhulagu.org"
+      },
+      {
+        "title": "Admin Dashboard",
+        "image": "/images/admin-anbusuzhulagu.png",
+        "url": "https://admin.anbusuzhulagu.org"
+      }
+    ],
+    "techStack": [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "REST API"
+    ],
+    "description": "A comprehensive unified charity platform featuring a public-facing website, a management admin panel, and REST APIs powering mobile applications for donation and campaign management.",
+    "theme": "charity"
   }
 ]

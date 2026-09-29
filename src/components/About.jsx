@@ -1,157 +1,619 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Award, Code2, Rocket, Terminal, Cpu, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, Cpu, FileCode2, Code2, Rocket, Award, User, MapPin, Phone, Mail, GraduationCap, Languages, CheckCircle2 } from 'lucide-react';
 
 const About = () => {
-  const highlights = [
-    {
-      icon: <Code2 size={24} className="text-accent" />,
-      title: 'Full-Stack Expertise',
-      description: 'Building end-to-end applications with React, Node.js, Express, MongoDB, and MySQL.'
-    },
-    {
-      icon: <Rocket size={24} className="text-accent" />,
-      title: 'Scalable Solutions',
-      description: 'Designing high-performance ERPs, CRMs, and custom web applications for enterprises.'
-    },
-    {
-      icon: <Award size={24} className="text-accent" />,
-      title: '2.5+ Years Experience',
-      description: 'Delivering robust production applications across multiple industries and freelance projects.'
-    },
+  const [activeCodeTab, setActiveCodeTab] = useState('developer');
+
+  const personalInfo = [
+    { label: 'First Name', value: 'Sathesh', icon: <User size={15} /> },
+    { label: 'Last Name', value: 'Immanuel', icon: <User size={15} /> },
+    { label: 'Age', value: '24 Years', icon: <Award size={15} /> },
+    { label: 'Nationality', value: 'Indian', icon: <MapPin size={15} /> },
+    { label: 'Freelance', value: 'Available', highlight: true, icon: <CheckCircle2 size={15} /> },
+    { label: 'Address', value: 'Chennai, India', icon: <MapPin size={15} /> },
+    { label: 'Phone', value: '+91 97894 13580', icon: <Phone size={15} /> },
+    { label: 'Email', value: 'satheshimmanuel77@gmail.com', icon: <Mail size={15} /> },
+    { label: 'Degree', value: 'B.E. Mechanical (8.1)', icon: <GraduationCap size={15} /> },
+    { label: 'Languages', value: 'English, Tamil', icon: <Languages size={15} /> },
   ];
 
   const stats = [
-    { label: 'Years Experience', value: '2.5+' },
-    { label: 'Companies Worked', value: '2' },
-    { label: 'Projects Delivered', value: '10+' },
-    { label: 'Engineering CGPA', value: '8.1' }
+    { value: '2.5+', label: 'YEARS OF', sub: 'EXPERIENCE' },
+    { value: '10+', label: 'COMPLETED', sub: 'PROJECTS' },
+    { value: '02', label: 'COMPANIES', sub: 'WORKED' },
+    { value: '8.1', label: 'ENGINEERING', sub: 'CGPA' },
+  ];
+
+  const highlights = [
+    {
+      icon: <Code2 size={24} color="var(--accent-color)" />,
+      title: 'Full-Stack Engineering',
+      description: 'Architecting scalable web applications with React 19, Node.js, Express, MongoDB, and MySQL.'
+    },
+    {
+      icon: <Rocket size={24} color="var(--accent-color)" />,
+      title: 'Enterprise ERP & CRM',
+      description: 'Designing high-volume business workflows, automated quotation pipelines, and RBAC portals.'
+    },
+    {
+      icon: <Award size={24} color="var(--accent-color)" />,
+      title: '2.5+ Years Production',
+      description: 'Delivering robust, real-world software across product companies and enterprise clients.'
+    }
+  ];
+
+  const codeTabs = [
+    { id: 'developer', name: 'developer.ts' },
+    { id: 'stack', name: 'stack.config' },
+    { id: 'mission', name: 'philosophy.md' }
   ];
 
   return (
-    <section className="container section" style={{ position: 'relative', minHeight: 'calc(100vh - 70px)', display: 'flex', alignItems: 'center', padding: '6rem 0' }}>
-      
-      {/* Subtle Background Pattern */}
-      <div style={{ position: 'fixed', inset: 0, zIndex: -1, backgroundImage: 'radial-gradient(var(--border-color) 1px, transparent 1px)', backgroundSize: '40px 40px', opacity: 0.2, pointerEvents: 'none' }} />
+    <section id="about" className="section" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="container">
+        {/* Tunis Section Title with Big Watermark */}
+        <div className="tunis-section-title-wrap">
+          <div className="tunis-watermark">RESUME</div>
+          <h2 className="tunis-title-foreground">
+            ABOUT <span>ME</span>
+          </h2>
+        </div>
 
-      <div style={{ width: '100%', zIndex: 10, display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-        
-        {/* Top Header & Intro */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'center' }}>
-          
-          <motion.div 
+        {/* 2-Column Tunis Resume Layout with Elevated Cards */}
+        <div className="about-tunis-grid">
+          {/* Left Column: Personal Infos Enclosed in a Clean Dark Card */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="about-personal-card"
           >
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem 1.25rem', borderRadius: '2rem', backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', marginBottom: '1.5rem' }}>
-              <Terminal size={18} className="text-accent" />
-              <span style={{ fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent-color)' }}>About Me</span>
+            <div className="about-card-header">
+              <div className="about-title-row">
+                <span className="about-accent-bar" />
+                <h3 className="about-subheading">PERSONAL INFOS</h3>
+              </div>
+              <span className="about-role-pill">Full Stack Engineer</span>
             </div>
 
-            <h2 style={{ fontSize: 'clamp(2.4rem, 4vw, 3.5rem)', fontWeight: 800, marginBottom: '1.5rem', lineHeight: 1.2, color: 'var(--text-primary)' }}>
-              Passionate Developer <br />
-              <span className="text-gradient">Crafting Modern Web Products.</span>
-            </h2>
-            
-            <p className="text-secondary" style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-              Graduated with a Mechanical Engineering degree (8.1 CGPA) in 2023, I pivoted into software engineering through rigorous training and hands-on production experience. Over the last 2.5 years, I have architected and deployed scalable MERN stack web platforms, ERP software, and CRM tools for businesses.
-            </p>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
-                <CheckCircle2 size={18} className="text-accent" /> Clean Code Standards
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
-                <CheckCircle2 size={18} className="text-accent" /> Responsive & Mobile-First
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.95rem' }}>
-                <CheckCircle2 size={18} className="text-accent" /> API & Database Design
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Code Window / Terminal Card Visual */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-          >
-            <div className="glass" style={{ width: '100%', maxWidth: '480px', borderRadius: '1.5rem', border: '1px solid var(--border-color)', overflow: 'hidden', boxShadow: '0 20px 40px -15px rgba(0,0,0,0.15)' }}>
-              {/* Terminal Title Bar */}
-              <div style={{ padding: '0.85rem 1.25rem', backgroundColor: 'var(--bg-tertiary)', borderBottom: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '0.4rem' }}>
-                  <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
-                  <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#f59e0b' }} />
-                  <span style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#10b981' }} />
+            <div className="about-info-grid">
+              {personalInfo.map((item, idx) => (
+                <div key={idx} className="about-info-tile">
+                  <div className="about-tile-icon">{item.icon}</div>
+                  <div className="about-tile-content">
+                    <span className="about-tile-label">{item.label}</span>
+                    <span className={`about-tile-val ${item.highlight ? 'text-accent highlight-val' : ''}`}>
+                      {item.value}
+                    </span>
+                  </div>
                 </div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'monospace' }}>developer-profile.json</span>
-                <Cpu size={16} className="text-accent" />
+              ))}
+            </div>
+
+            <div className="about-card-footer">
+              <a
+                href="/images/sathesh@immanuel.pdf"
+                download="Sathesh_Immanuel_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-tunis"
+              >
+                <span>DOWNLOAD CV</span>
+                <div className="btn-icon-circle">
+                  <Download size={18} />
+                </div>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: 4 Stat Boxes (2x2 Grid) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="about-stats-grid"
+          >
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ translateY: -6, boxShadow: '0 16px 35px -10px rgba(0, 0, 0, 0.6)' }}
+                className="about-stat-box"
+              >
+                <div className="about-stat-number">{stat.value}</div>
+                <div className="about-stat-text">
+                  <span>{stat.label}</span>
+                  <strong>{stat.sub}</strong>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Middle Highlights & Interactive Terminal */}
+        <div className="about-bottom-grid">
+          {/* Highlights */}
+          <div className="about-highlights-list">
+            {highlights.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bento-card highlight-card"
+              >
+                <div className="highlight-icon-box">
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className="highlight-title">
+                    {item.title}
+                  </h4>
+                  <p className="highlight-desc">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Interactive Developer Code Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="about-terminal-wrap"
+          >
+            <div className="glass terminal-card">
+              {/* Terminal Title Bar */}
+              <div className="terminal-topbar">
+                <div className="terminal-dots">
+                  <span style={{ backgroundColor: '#EF4444' }} />
+                  <span style={{ backgroundColor: '#F59E0B' }} />
+                  <span style={{ backgroundColor: '#10B981' }} />
+                </div>
+
+                {/* Tabs */}
+                <div className="terminal-tabs">
+                  {codeTabs.map((tab) => {
+                    const isActive = activeCodeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveCodeTab(tab.id)}
+                        className={`terminal-tab-btn ${isActive ? 'active' : ''}`}
+                      >
+                        <FileCode2 size={12} />
+                        {tab.name}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <Cpu size={16} color="var(--accent-color)" />
               </div>
 
-              {/* Code Snippet Box */}
-              <div style={{ padding: '1.75rem', fontFamily: 'monospace', fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--text-primary)', backgroundColor: 'var(--bg-secondary)', overflowX: 'auto' }}>
-                <span style={{ color: 'var(--accent-color)' }}>const</span> <span style={{ color: '#ec4899' }}>developer</span> = &#123;<br />
-                &nbsp;&nbsp;name: <span style={{ color: '#10b981' }}>"Sathesh Immanuel"</span>,<br />
-                &nbsp;&nbsp;role: <span style={{ color: '#10b981' }}>"MERN Stack Developer"</span>,<br />
-                &nbsp;&nbsp;experience: <span style={{ color: '#f59e0b' }}>"2.5+ Years"</span>,<br />
-                &nbsp;&nbsp;location: <span style={{ color: '#10b981' }}>"Chennai, India"</span>,<br />
-                &nbsp;&nbsp;passions: [<span style={{ color: '#10b981' }}>"Web Architecture"</span>, <span style={{ color: '#10b981' }}>"UI/UX"</span>, <span style={{ color: '#10b981' }}>"ERP Systems"</span>],<br />
-                &nbsp;&nbsp;availability: <span style={{ color: '#3b82f6' }}>true</span><br />
-                &#125;;
+              {/* Code Snippet */}
+              <div className="terminal-content">
+                <AnimatePresence mode="wait">
+                  {activeCodeTab === 'developer' && (
+                    <motion.div
+                      key="developer"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="code-kw">const</span> <span className="code-var">engineer</span> = &#123;<br />
+                      &nbsp;&nbsp;name: <span className="code-str">"Sathesh Immanuel"</span>,<br />
+                      &nbsp;&nbsp;role: <span className="code-str">"Full Stack Engineer"</span>,<br />
+                      &nbsp;&nbsp;experience: <span className="code-str">"2.5+ Years"</span>,<br />
+                      &nbsp;&nbsp;location: <span className="code-str">"Chennai, India"</span>,<br />
+                      &nbsp;&nbsp;education: <span className="code-muted">"B.E. Mech (8.1 CGPA)"</span>,<br />
+                      &nbsp;&nbsp;status: <span className="code-success">"Ready for high-impact work"</span><br />
+                      &#125;;
+                    </motion.div>
+                  )}
+
+                  {activeCodeTab === 'stack' && (
+                    <motion.div
+                      key="stack"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="code-kw">export const</span> <span className="code-var">coreArchitecture</span> = &#123;<br />
+                      &nbsp;&nbsp;frontend: [<span className="code-str">"React 19"</span>, <span className="code-str">"TypeScript"</span>, <span className="code-str">"Framer Motion"</span>],<br />
+                      &nbsp;&nbsp;backend: [<span className="code-str">"Node.js"</span>, <span className="code-str">"Express"</span>, <span className="code-str">"REST APIs"</span>],<br />
+                      &nbsp;&nbsp;database: [<span className="code-str">"MongoDB"</span>, <span className="code-str">"MySQL"</span>, <span className="code-str">"Mongoose"</span>],<br />
+                      &nbsp;&nbsp;specialties: [<span className="code-str">"PDF-Lib"</span>, <span className="code-str">"RBAC"</span>, <span className="code-str">"ERP Automation"</span>]<br />
+                      &#125;;
+                    </motion.div>
+                  )}
+
+                  {activeCodeTab === 'mission' && (
+                    <motion.div
+                      key="mission"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="code-muted"># Engineering Philosophy</span><br />
+                      <span className="code-kw">1. Precision Over Hype:</span> Clean architecture.<br />
+                      <span className="code-kw">2. User-Centric:</span> Accessible, 60fps UIs.<br />
+                      <span className="code-kw">3. Resilient Systems:</span> Secure auth & DBs.<br />
+                      <span className="code-kw">4. Fast Delivery:</span> Production reliability.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
         </div>
-
-        {/* Middle Feature Highlights Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-          {highlights.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass"
-              style={{
-                padding: '2rem',
-                borderRadius: '1.5rem',
-                border: '1px solid var(--border-color)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-                transition: 'all 0.3s ease'
-              }}
-            >
-              <div style={{ padding: '0.75rem', width: 'fit-content', borderRadius: '1rem', backgroundColor: 'var(--bg-tertiary)' }}>
-                {item.icon}
-              </div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text-primary)' }}>{item.title}</h3>
-              <p className="text-secondary" style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom Metrics Bar */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1.5rem' }}>
-          {stats.map((stat, index) => (
-            <motion.div 
-              key={index} 
-              whileHover={{ y: -4 }}
-              className="glass" 
-              style={{ padding: '1.75rem', borderRadius: '1.25rem', border: '1px solid var(--border-color)', textAlign: 'center' }}
-            >
-              <div style={{ fontSize: '2.75rem', fontWeight: 800, color: 'var(--accent-color)', marginBottom: '0.25rem' }}>{stat.value}</div>
-              <div style={{ fontSize: '0.85rem', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-
       </div>
+
+      <style>{`
+        .about-tunis-grid {
+          display: grid;
+          grid-template-columns: 60% 40%;
+          gap: 2.25rem;
+          align-items: stretch;
+        }
+
+        .about-personal-card {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: 1.5rem;
+          padding: 2.25rem;
+          box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.45);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+          z-index: 2;
+        }
+
+        .about-card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin-bottom: 1.75rem;
+          border-bottom: 1px solid var(--border-color);
+          padding-bottom: 1.25rem;
+        }
+
+        .about-title-row {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .about-accent-bar {
+          width: 4px;
+          height: 24px;
+          background: var(--accent-color);
+          border-radius: 4px;
+        }
+
+        .about-subheading {
+          font-size: 1.35rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: var(--text-primary);
+          letter-spacing: 0.04em;
+          margin: 0;
+        }
+
+        .about-role-pill {
+          font-size: 0.75rem;
+          font-weight: 700;
+          padding: 0.35rem 0.85rem;
+          border-radius: 9999px;
+          background: var(--accent-soft);
+          color: var(--accent-color);
+          border: 1px solid var(--border-highlight);
+        }
+
+        .about-info-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem 1.25rem;
+          margin-bottom: 2rem;
+        }
+
+        .about-info-tile {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          padding: 0.75rem 0.9rem;
+          border-radius: 12px;
+          background: var(--bg-tertiary);
+          border: 1px solid rgba(255, 255, 255, 0.04);
+          transition: all 0.25s ease;
+        }
+
+        .about-info-tile:hover {
+          border-color: var(--border-highlight);
+          background: var(--bg-card-hover);
+        }
+
+        .about-tile-icon {
+          color: var(--accent-color);
+          margin-top: 2px;
+          flex-shrink: 0;
+        }
+
+        .about-tile-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.15rem;
+          min-width: 0;
+        }
+
+        .about-tile-label {
+          font-size: 0.72rem;
+          color: var(--text-muted);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+
+        .about-tile-val {
+          font-size: 0.88rem;
+          color: var(--text-primary);
+          font-weight: 700;
+          word-break: break-word;
+          line-height: 1.3;
+        }
+
+        .about-tile-val.highlight-val {
+          color: var(--accent-color);
+        }
+
+        .about-card-footer {
+          display: flex;
+          align-items: center;
+          padding-top: 1rem;
+          border-top: 1px solid var(--border-color);
+        }
+
+        .about-stats-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1.15rem;
+          justify-content: space-between;
+        }
+
+        .about-stat-box {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: 1.25rem;
+          padding: 1.35rem 1.65rem;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.45);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+          z-index: 2;
+        }
+
+        .about-stat-box:hover {
+          border-color: var(--border-highlight);
+        }
+
+        .about-stat-number {
+          font-size: clamp(2rem, 2.5vw, 2.6rem);
+          font-weight: 900;
+          color: var(--accent-color);
+          line-height: 1;
+          min-width: 85px;
+        }
+
+        .about-stat-text {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+          font-size: 0.82rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--text-secondary);
+          padding-left: 1.5rem;
+          position: relative;
+        }
+
+        .about-stat-text::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 8px;
+          width: 16px;
+          height: 2px;
+          background-color: var(--accent-color);
+          border-radius: 2px;
+        }
+
+        .about-stat-text strong {
+          color: var(--text-primary);
+          font-weight: 800;
+        }
+
+        .about-bottom-grid {
+          margin-top: 3.5rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 2rem;
+          align-items: stretch;
+        }
+
+        .about-highlights-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1.15rem;
+        }
+
+        .highlight-card {
+          padding: 1.35rem 1.5rem;
+          display: flex;
+          gap: 1.25rem;
+          align-items: flex-start;
+          background: var(--bg-card);
+          border-radius: 1.25rem;
+          border: 1px solid var(--border-color);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-icon-box {
+          padding: 0.75rem;
+          border-radius: 14px;
+          background: var(--bg-tertiary);
+          border: 1px solid var(--border-color);
+          flex-shrink: 0;
+        }
+
+        .highlight-title {
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: var(--text-primary);
+          margin-bottom: 0.35rem;
+        }
+
+        .highlight-desc {
+          font-size: 0.86rem;
+          color: var(--text-secondary);
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        .about-terminal-wrap {
+          width: 100%;
+          display: flex;
+        }
+
+        .terminal-card {
+          width: 100%;
+          border-radius: 1.25rem;
+          overflow: hidden;
+          box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5);
+          border: 1px solid var(--border-color);
+          display: flex;
+          flex-direction: column;
+        }
+
+        .terminal-topbar {
+          padding: 0.75rem 1.25rem;
+          background-color: var(--bg-tertiary);
+          border-bottom: 1px solid var(--border-color);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.5rem;
+        }
+
+        .terminal-dots {
+          display: flex;
+          gap: 0.35rem;
+          align-items: center;
+        }
+
+        .terminal-dots span {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+
+        .terminal-tabs {
+          display: flex;
+          gap: 0.35rem;
+        }
+
+        .terminal-tab-btn {
+          padding: 0.25rem 0.7rem;
+          border-radius: 0.4rem;
+          background: transparent;
+          border: 1px solid transparent;
+          color: var(--text-muted);
+          font-size: 0.75rem;
+          font-weight: 500;
+          font-family: var(--font-mono);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .terminal-tab-btn.active {
+          background: var(--bg-card);
+          border-color: var(--border-color);
+          color: var(--accent-color);
+          font-weight: 700;
+        }
+
+        .terminal-content {
+          padding: 1.5rem;
+          font-family: var(--font-mono);
+          font-size: 0.83rem;
+          line-height: 1.75;
+          color: var(--text-primary);
+          background-color: var(--bg-secondary);
+          flex: 1;
+          min-height: 220px;
+          overflow-x: auto;
+        }
+
+        .code-kw {
+          color: var(--accent-color);
+          font-weight: 600;
+        }
+
+        .code-var {
+          color: var(--text-primary);
+          font-weight: 600;
+        }
+
+        .code-str {
+          color: #FCD34D;
+        }
+
+        .code-muted {
+          color: var(--text-muted);
+        }
+
+        .code-success {
+          color: #10B981;
+          font-weight: 600;
+        }
+
+        @media (max-width: 992px) {
+          .about-tunis-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .about-personal-card {
+            padding: 1.5rem;
+          }
+          .about-info-grid {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+          }
+          .about-stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+          }
+        }
+      `}</style>
     </section>
   );
 };
