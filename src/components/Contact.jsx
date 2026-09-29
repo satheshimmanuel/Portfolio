@@ -68,8 +68,8 @@ const Contact = () => {
               </div>
               <div className="contact-info-text">
                 <span className="contact-info-sub">MAIL ME</span>
-                <a href="mailto:satheshimmanuel77@gmail.com" className="contact-info-main contact-link">
-                  satheshimmanuel77@gmail.com
+                <a href="mailto:satheshimmanuel@gmail.com" className="contact-info-main contact-link">
+                  satheshimmanuel@gmail.com
                 </a>
               </div>
             </div>
@@ -93,7 +93,7 @@ const Contact = () => {
             <span className="contact-social-label">CONNECT WITH ME</span>
             <div className="contact-social-row">
               <a
-                href="https://github.com/satheshimmanuel"
+                href="https://github.com/satheshimmanvel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon-btn"

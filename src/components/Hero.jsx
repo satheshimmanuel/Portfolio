@@ -114,7 +114,7 @@ const Hero = () => {
               </a>
 
               <a
-                href="/images/sathesh@immanuel.pdf"
+                href="/sathesh@immanuel.pdf"
                 download="Sathesh_Immanuel_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"

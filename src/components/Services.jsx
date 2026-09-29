@@ -18,7 +18,7 @@ const servicesList = [
     title: 'Custom Web Applications',
     desc: 'Engineering lightning-fast, reactive single-page applications and robust RESTful APIs with clean modular architecture and seamless UX.',
     icon: <Code2 size={26} />,
-    tags: ['React 19 / Vite', 'Node.js & Express', 'MongoDB & MySQL', 'REST APIs'],
+    tags: ['React / Vite', 'Node.js & Express', 'MongoDB & MySQL', 'REST APIs'],
     highlight: false
   },
   {

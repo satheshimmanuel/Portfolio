@@ -11,7 +11,7 @@ const skillCategories = [
     subtitle: 'Creating lightning-fast, reactive, and fluid user interfaces with strict component modularity.',
     icon: <Layout size={20} />,
     skills: [
-      { name: 'React 19 / 18', level: 'Core Mastery', percent: 95, icon: <FaReact />, tag: 'Frontend' },
+      { name: 'React', level: 'Core Mastery', percent: 95, icon: <FaReact />, tag: 'Frontend' },
       { name: 'TypeScript', level: 'Advanced', percent: 88, icon: <SiTypescript />, tag: 'Language' },
       { name: 'JavaScript (ES6+)', level: 'Deep Fluency', percent: 95, icon: <FaJs />, tag: 'Language' },
       { name: 'State Architecture', level: 'Context / Redux', percent: 90, icon: <SiRedux />, tag: 'State' },
@@ -29,10 +29,8 @@ const skillCategories = [
     skills: [
       { name: 'Node.js Engine', level: 'Production Core', percent: 92, icon: <FaNodeJs />, tag: 'Runtime' },
       { name: 'Express.js Framework', level: 'REST APIs', percent: 92, icon: <SiExpress />, tag: 'Framework' },
-      { name: 'RBAC & Auth Systems', level: 'JWT / Session', percent: 88, icon: <CheckCircle2 />, tag: 'Security' },
       { name: 'PDF-Lib Generation', level: 'Automated Quotes', percent: 94, icon: <Terminal />, tag: 'Automation' },
       { name: 'RESTful API Design', level: 'OpenAPI Spec', percent: 92, icon: <Sparkles />, tag: 'Architecture' },
-      { name: 'Python Scripts', level: 'Utilities', percent: 75, icon: <FaPython />, tag: 'Scripting' }
     ]
   },
   {
@@ -42,9 +40,7 @@ const skillCategories = [
     icon: <Database size={20} />,
     skills: [
       { name: 'MongoDB', level: 'Pipelines & Aggregations', percent: 92, icon: <SiMongodb />, tag: 'NoSQL' },
-      { name: 'Mongoose ODM', level: 'Schema & Middleware', percent: 92, icon: <SiMongodb />, tag: 'Data Modeling' },
       { name: 'MySQL Relational DB', level: 'Joins & Foreign Keys', percent: 85, icon: <SiMysql />, tag: 'SQL' },
-      { name: 'ACID Transactions', level: 'Atomic Operations', percent: 88, icon: <CheckCircle2 />, tag: 'Data Integrity' }
     ]
   },
   {

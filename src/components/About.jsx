@@ -13,7 +13,7 @@ const About = () => {
     { label: 'Freelance', value: 'Available', highlight: true, icon: <CheckCircle2 size={15} /> },
     { label: 'Address', value: 'Chennai, India', icon: <MapPin size={15} /> },
     { label: 'Phone', value: '+91 97894 13580', icon: <Phone size={15} /> },
-    { label: 'Email', value: 'satheshimmanuel77@gmail.com', icon: <Mail size={15} /> },
+    { label: 'Email', value: 'satheshimmanuel@gmail.com', icon: <Mail size={15} /> },
     { label: 'Degree', value: 'B.E. Mechanical (8.1)', icon: <GraduationCap size={15} /> },
     { label: 'Languages', value: 'English, Tamil', icon: <Languages size={15} /> },
   ];
@@ -94,7 +94,7 @@ const About = () => {
 
             <div className="about-card-footer">
               <a
-                href="/images/sathesh@immanuel.pdf"
+                href="/sathesh@immanuel.pdf"
                 download="Sathesh_Immanuel_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
