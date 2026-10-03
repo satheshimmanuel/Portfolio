@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://satheshimmanuelportfolio.vercel.app/sitemap.xml
