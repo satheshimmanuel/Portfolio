@@ -12,7 +12,7 @@ const About = () => {
     { label: 'Nationality', value: 'Indian', icon: <MapPin size={15} /> },
     { label: 'Freelance', value: 'Available', highlight: true, icon: <CheckCircle2 size={15} /> },
     { label: 'Address', value: 'Chennai, India', icon: <MapPin size={15} /> },
-    { label: 'Phone', value: '+91 97894 13580', icon: <Phone size={15} /> },
+    { label: 'Phone', value: '+91 96882 02165', icon: <Phone size={15} /> },
     { label: 'Email', value: 'satheshimmanuel@gmail.com', icon: <Mail size={15} /> },
     { label: 'Degree', value: 'B.E. Mechanical (8.1)', icon: <GraduationCap size={15} /> },
     { label: 'Languages', value: 'English, Tamil', icon: <Languages size={15} /> },

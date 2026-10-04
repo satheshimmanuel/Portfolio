@@ -82,7 +82,7 @@ const Contact = () => {
               <div className="contact-info-text">
                 <span className="contact-info-sub">CALL ME</span>
                 <a href="tel:+919789413580" className="contact-info-main contact-link">
-                  +91 97894 13580
+                  +91 96882 02165
                 </a>
               </div>
             </div>

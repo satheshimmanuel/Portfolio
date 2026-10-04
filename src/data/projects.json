@@ -1,38 +1,96 @@
 [
   {
-    "id": "ecommerce-portal",
-    "title": "E-Commerce Portal",
+    "id": "Syncraze",
+    "title": "Syncraze",
     "category": "Ocean Softwares",
-    "mainImage": "/images/adminNalsuvai.png",
+    "mainImage": "/images/syncraze.png",
     "roles": [
       "Frontend Development",
-      "Backend Development"
+      "Backend Development",
+      "Database Architecture",
+      "Workflow Management",
+      "Custom Form Builder",
+      "Custom Report Builder"
     ],
     "websites": [
       {
-        "title": "User Website",
-        "image": "/images/Nalsuvai.png",
-        "url": "https://nalsuvai.com/"
-      },
-      {
-        "title": "Admin Dashboard",
-        "image": "/images/adminNalsuvai.png",
-        "url": "https://admin.nalsuvai.com"
+        "title": "Syncraze",
+        "image": "/images/syncraze.png",
+        "url": "https://syncraze.com"
       }
     ],
     "techStack": [
       "React",
+      "TypeScript",
       "Node.js",
-      "MongoDB"
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "Material UI",
+      "Zod"
     ],
-    "description": "A high-conversion e-commerce platform built from the ground up. It features dynamic inventory management, secure checkout, and a custom admin dashboard to track orders and revenue.",
-    "theme": "ecommerce"
+    "description": "A comprehensive enterprise management platform designed to digitize and streamline business workflows, inspections, compliance processes, custom data collection, and reporting. The platform provides configurable modules that allow organizations to create dynamic forms, define multi-level approval workflows, collect structured operational data, and generate customized reports from the collected information.",
+    "features": [
+      {
+        "title": "Dynamic Workflow Management",
+        "description": "Designed and developed configurable workflows to automate business processes from initiation to completion. Supported multi-step approval flows, role-based actions, status transitions, workflow assignments, and structured approval processes."
+      },
+      {
+        "title": "Custom Form Builder",
+        "description": "Developed a dynamic form-building system that allows administrators to create customized forms without modifying the application code. Supported multiple field types, sections, validations, dropdowns, text fields, date fields, numeric fields, attachments, dynamic options, and configurable form structures."
+      },
+      {
+        "title": "Advanced Multi-Section Forms",
+        "description": "Implemented multi-section and nested form structures for complex operational processes. Forms can be organized into logical sections with configurable fields, validation rules, conditional options, and structured data collection."
+      },
+      {
+        "title": "Custom Report Builder",
+        "description": "Developed configurable reporting functionality to convert collected form and workflow data into structured reports. Supported dynamic columns, filters, sorting, search, pagination, status-based filtering, and business-specific report views."
+      },
+      {
+        "title": "Dynamic Inspection & Audit Templates",
+        "description": "Built configurable inspection and audit templates that allow administrators to define inspection sections, questions, response types, scoring or status-based inputs, remarks, attachments, and other operational requirements."
+      },
+      {
+        "title": "Permit Management",
+        "description": "Implemented permit management workflows with dynamic forms, configurable permit types, approval stages, status tracking, and structured data collection for operational activities."
+      },
+      {
+        "title": "Role-Based Access Control",
+        "description": "Implemented role-based access and permission management to control module visibility and user actions based on assigned roles and responsibilities."
+      },
+      {
+        "title": "Dynamic Options & Configuration",
+        "description": "Created reusable dynamic configuration components for managing dropdown values, categories, options, statuses, and other configurable master data used across forms and workflows."
+      },
+      {
+        "title": "Data Validation",
+        "description": "Implemented structured client-side and server-side validation using Zod and custom validation rules to ensure accurate and consistent data submission."
+      },
+      {
+        "title": "Admin Dashboard & Data Management",
+        "description": "Developed responsive administrative interfaces for managing users, workflows, forms, templates, reports, configurations, and operational records using reusable React and Material UI components."
+      }
+    ],
+    "techHighlights": [
+      "React with TypeScript",
+      "Material UI with reusable components",
+      "Node.js and Express.js REST APIs",
+      "MongoDB with Mongoose",
+      "Zod-based validation",
+      "Dynamic JSON-driven form architecture",
+      "Role-based permissions",
+      "Configurable workflow engine",
+      "Dynamic reporting and filtering",
+      "Reusable data-table components"
+    ],
+    "theme": "enterprise"
   },
   {
     "id": "CNI Business Forum",
     "title": "CNI Business Forum",
     "category": "Ocean Softwares",
-    "mainImage": "/images/cni.png",
+    "mainImage": "/images/Cni.png",
     "roles": [
       "Frontend Development",
       "Database Architecture"
@@ -56,7 +114,7 @@
     "id": "Ramesh Traders POS",
     "title": "Ramesh Traders POS",
     "category": "Ocean Softwares",
-    "mainImage": "/images/Ramesh.png",
+    "mainImage": "/images/rameshadmin.png",
     "roles": [
       "Full Stack Development"
     ],
@@ -107,7 +165,7 @@
     "id": "Tiny Theatre",
     "title": "Tiny Theatre",
     "category": "Ocean Softwares",
-    "mainImage": "/images/tt.png",
+    "mainImage": "/images/tiny-theatre.png",
     "roles": [
       "Frontend Development",
       "Backend Development"
@@ -136,7 +194,7 @@
     "id": "charity-anbusuzhulagu",
     "title": "Anbusuzhulagu Charity Platform",
     "category": "Ocean Softwares",
-    "mainImage": "/images/anbusuzhulagu.png",
+    "mainImage": "/images/anbusuzh.png",
     "roles": [
       "Full Stack Development",
       "API Development (Web & Mobile)"
@@ -144,12 +202,12 @@
     "websites": [
       {
         "title": "User Website",
-        "image": "/images/anbusuzhulagu.png",
+        "image": "/images/anbusuzh.png",
         "url": "https://anbusuzhulagu.org"
       },
       {
         "title": "Admin Dashboard",
-        "image": "/images/admin-anbusuzhulagu.png",
+        "image": "/images/admin-anbusuzh.png",
         "url": "https://admin.anbusuzhulagu.org"
       }
     ],
@@ -162,5 +220,71 @@
     ],
     "description": "A comprehensive unified charity platform featuring a public-facing website, a management admin panel, and REST APIs powering mobile applications for donation and campaign management.",
     "theme": "charity"
+  },
+  {
+    "id": "Happy Folks International Preschool",
+    "title": "Happy Folks International Preschool",
+    "category": "Freelance Projects",
+    "mainImage": "/images/adminHappyFolks.png",
+    "roles": [
+      "Full Stack Development",
+      "Frontend Development",
+      "Backend Development",
+      "Admin Panel Development",
+      "Database Architecture"
+    ],
+    "websites": [
+      {
+        "title": "Happy Folks International Preschool",
+        "image": "/images/happyfolks.png",
+        "url": "https://happyfolks.in"
+      }
+    ],
+    "techStack": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "Material UI"
+    ],
+    "description": "A freelance school management and institutional website project developed for Happy Folks International Preschool. The project includes a responsive public-facing website along with an administrative system for managing school-related information, student records, billing, and operational content.",
+    "features": [
+      {
+        "title": "School Website",
+        "description": "Developed a responsive and professional school website to showcase the institution, programs, facilities, activities, admissions information, and contact details."
+      },
+      {
+        "title": "Admin Panel",
+        "description": "Built an administrative dashboard to manage school information and operational data through a centralized interface."
+      },
+      {
+        "title": "Student Management",
+        "description": "Implemented student-related data management with structured records and administrative controls."
+      },
+      {
+        "title": "Invoice & Billing",
+        "description": "Developed a professional invoice generation interface for managing school billing information, fee details, calculations, and printable invoice layouts."
+      },
+      {
+        "title": "Content Management",
+        "description": "Created configurable management screens for maintaining website content and school-related information without directly modifying the frontend code."
+      },
+      {
+        "title": "Responsive UI",
+        "description": "Designed responsive interfaces optimized for desktop, tablet, and mobile devices with a clean and professional school-focused visual experience."
+      }
+    ],
+    "techHighlights": [
+      "React and TypeScript",
+      "Node.js and Express.js",
+      "MongoDB and Mongoose",
+      "REST API integration",
+      "Admin dashboard development",
+      "Invoice and billing UI",
+      "Responsive web design"
+    ],
+    "theme": "education"
   }
 ]

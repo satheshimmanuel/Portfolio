@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X, ExternalLink, Sparkles, CheckCircle2, Briefcase } from 'lucide-react';
+import { ArrowRight, X, ExternalLink, Sparkles, CheckCircle2, Briefcase, ChevronLeft, ChevronRight } from 'lucide-react';
 import projectsData from '../data/projects.json';
+
+const ITEMS_PER_PAGE = 6;
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const categories = ['All', 'Ocean Softwares'];
+  const categories = ['All', ...Array.from(new Set(projectsData.map(p => p.category).filter(Boolean)))];
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    setCurrentPage(1);
+  };
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
     : projectsData.filter(p => p.category === activeCategory);
+
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+
+  const paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
 
   return (
     <section id="projects" className="container section" style={{ position: 'relative' }}>
@@ -39,7 +54,7 @@ const Projects = () => {
               key={category}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryChange(category)}
               style={{
                 padding: '0.55rem 1.35rem',
                 borderRadius: '9999px',
@@ -62,7 +77,7 @@ const Projects = () => {
       {/* Projects Grid */}
       <motion.div layout className="projects-grid" style={{ position: 'relative', zIndex: 10 }}>
         <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
+          {paginatedProjects.map((project, index) => (
             <motion.div
               layout
               initial={{ opacity: 0, y: 35 }}
@@ -76,7 +91,7 @@ const Projects = () => {
               onClick={() => setSelectedProject(project)}
             >
               {/* Header: Category Badge + Status */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.85rem' }}>
                 <span className="project-category-tag">
                   {project.category}
                 </span>
@@ -85,6 +100,17 @@ const Projects = () => {
                   Live System
                 </span>
               </div>
+
+              {/* Project Main Image / Photo */}
+              {project.mainImage && (
+                <div className="project-card-img-wrapper">
+                  <img
+                    src={project.mainImage}
+                    alt={project.title}
+                    className="project-card-img"
+                  />
+                </div>
+              )}
 
               {/* Project Title */}
               <h3 className="project-card-title">
@@ -144,7 +170,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-        {/* Footer Action */}
+                {/* Footer Action */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem' }}>
                   <span style={{ fontSize: '0.825rem', fontWeight: 600, color: 'var(--accent-color)' }}>
                     View Details & Panels
@@ -159,6 +185,90 @@ const Projects = () => {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '0.5rem', marginTop: '3rem', position: 'relative', zIndex: 10 }}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            disabled={currentPage === 1}
+            onClick={() => {
+              setCurrentPage(prev => Math.max(prev - 1, 1));
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{
+              padding: '0.5rem 0.9rem',
+              borderRadius: '0.75rem',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              color: currentPage === 1 ? 'var(--text-muted)' : 'var(--text-primary)',
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              opacity: currentPage === 1 ? 0.5 : 1
+            }}
+          >
+            <ChevronLeft size={16} /> Prev
+          </motion.button>
+
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <motion.button
+              key={page}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              onClick={() => {
+                setCurrentPage(page);
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '0.75rem',
+                background: currentPage === page ? 'var(--accent-gradient)' : 'var(--bg-card)',
+                border: currentPage === page ? '1px solid transparent' : '1px solid var(--border-color)',
+                color: currentPage === page ? '#14171C' : 'var(--text-primary)',
+                fontWeight: 700,
+                fontSize: '0.875rem',
+                cursor: 'pointer',
+                transition: 'all 0.25s ease',
+                boxShadow: currentPage === page ? '0 4px 14px rgba(var(--accent-color-rgb), 0.35)' : 'none'
+              }}
+            >
+              {page}
+            </motion.button>
+          ))}
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            disabled={currentPage === totalPages}
+            onClick={() => {
+              setCurrentPage(prev => Math.min(prev + 1, totalPages));
+              document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{
+              padding: '0.5rem 0.9rem',
+              borderRadius: '0.75rem',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              color: currentPage === totalPages ? 'var(--text-muted)' : 'var(--text-primary)',
+              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              fontSize: '0.85rem',
+              fontWeight: 600,
+              opacity: currentPage === totalPages ? 0.5 : 1
+            }}
+          >
+            Next <ChevronRight size={16} />
+          </motion.button>
+        </div>
+      )}
 
       {/* Interactive Modal */}
       <AnimatePresence>
@@ -356,6 +466,27 @@ const Projects = () => {
           box-shadow: 0 16px 35px -10px rgba(var(--accent-color-rgb), 0.2);
         }
 
+        .project-card-img-wrapper {
+          overflow: hidden;
+          border-radius: 0.85rem;
+          margin-bottom: 1rem;
+          height: 175px;
+          border: 1px solid var(--border-color);
+          background: var(--bg-primary);
+        }
+
+        .project-card-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .project-card-item:hover .project-card-img {
+          transform: scale(1.05);
+        }
+
         .project-category-tag {
           font-size: 0.7rem;
           font-weight: 700;
@@ -395,7 +526,7 @@ const Projects = () => {
           border: 1px solid var(--border-color);
           display: flex;
           align-items: center;
-          justifyContent: center;
+          justify-content: center;
           color: var(--text-primary);
           transition: all 0.25s ease;
           flex-shrink: 0;
@@ -431,6 +562,9 @@ const Projects = () => {
           .project-card-item {
             padding: 1.25rem !important;
           }
+          .project-card-img-wrapper {
+            height: 160px !important;
+          }
         }
       `}</style>
     </section>
@@ -438,4 +572,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

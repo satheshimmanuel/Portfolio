@@ -13,6 +13,7 @@ import CommandMenu from './components/CommandMenu';
 import CustomCursor from './components/CustomCursor';
 import AmbientMesh from './components/AmbientMesh';
 import FallingRainLines from './components/FallingRainLines';
+import FirecrackersEffect from './components/FirecrackersEffect';
 import { ThemeProvider } from './context/ThemeContext';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -60,6 +61,7 @@ function App() {
         <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
           <AmbientMesh />
           <FallingRainLines />
+          <FirecrackersEffect />
           <CustomCursor />
           <Navigation />
           <CommandMenu />
