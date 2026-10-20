@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { Home, User, Briefcase, Mail, Layers, GraduationCap, Sun, Moon, Sparkles } from 'lucide-react';
+import { Home, User, Briefcase, Mail, Layers, GraduationCap, Sun, Moon, Sparkles, Tag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { label: 'HOME', id: 'hero', icon: <Home size={20} /> },
   { label: 'ABOUT', id: 'about', icon: <User size={20} /> },
-  { label: 'PORTFOLIO', id: 'projects', icon: <Briefcase size={20} /> },
   { label: 'STACK', id: 'skills', icon: <Layers size={20} /> },
+  { label: 'PRICING', id: 'pricing', icon: <Tag size={20} /> },
+  { label: 'PORTFOLIO', id: 'projects', icon: <Briefcase size={20} /> },
   { label: 'EXPERIENCE', id: 'experience', icon: <GraduationCap size={20} /> },
   { label: 'CONTACT', id: 'contact', icon: <Mail size={20} /> },
 ];
@@ -21,7 +22,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'projects', 'skills', 'services', 'experience', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'services', 'pricing', 'projects', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {

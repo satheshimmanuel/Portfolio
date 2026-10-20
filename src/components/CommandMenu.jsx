@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Home, User, Settings, Briefcase, Mail, Palette, Layers, Terminal } from 'lucide-react';
+import { Search, Home, User, Settings, Briefcase, Mail, Palette, Layers, Terminal, Tag } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -39,6 +39,7 @@ const CommandMenu = () => {
     { id: 'nav-about', title: 'Go to About & Engineering Story', icon: <User size={18} />, type: 'Navigation', action: () => scrollTo('about') },
     { id: 'nav-skills', title: 'Go to Technical Stack & Architecture', icon: <Layers size={18} />, type: 'Navigation', action: () => scrollTo('skills') },
     { id: 'nav-services', title: 'Go to Enterprise Capabilities', icon: <Settings size={18} />, type: 'Navigation', action: () => scrollTo('services') },
+    { id: 'nav-pricing', title: 'Go to Transparent Pricing & Rate Card', icon: <Tag size={18} />, type: 'Navigation', action: () => scrollTo('pricing') },
     { id: 'nav-projects', title: 'Go to Case Studies & Projects', icon: <Briefcase size={18} />, type: 'Navigation', action: () => scrollTo('projects') },
     { id: 'nav-experience', title: 'Go to Career Track Record', icon: <Terminal size={18} />, type: 'Navigation', action: () => scrollTo('experience') },
     { id: 'nav-contact', title: 'Go to Contact & Connect', icon: <Mail size={18} />, type: 'Navigation', action: () => scrollTo('contact') },
